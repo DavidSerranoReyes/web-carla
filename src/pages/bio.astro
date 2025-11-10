@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+---
+
+<Layout title="Bio - Carla">
+  <Header client:load />
+
+  <main class="bio-main">
+    <div class="container">
+      <h1 class="page-title fade-in">Biografía</h1>
+
+      <div class="bio-content fade-in">
+        <section class="bio-section">
+          <h2>Sobre mí</h2>
+          <p>[Aquí va la biografía personal de Carla]</p>
+        </section>
+
+        <section class="bio-section">
+          <h2>Experiencia</h2>
+          <div class="experience-item">
+            <h3>Puesto 1</h3>
+            <p class="date">2020 - Presente</p>
+            <p>Descripción de la experiencia laboral.</p>
+          </div>
+          <div class="experience-item">
+            <h3>Puesto 2</h3>
+            <p class="date">2018 - 2020</p>
+            <p>Descripción de la experiencia laboral.</p>
+          </div>
+        </section>
+
+        <section class="bio-section">
+          <h2>Educación</h2>
+          <div class="experience-item">
+            <h3>Título Académico</h3>
+            <p class="date">2015 - 2019</p>
+            <p>Universidad / Institución</p>
+          </div>
+        </section>
+
+        <section class="bio-section">
+          <a href="/cv.pdf" class="btn btn-primary" download> Descargar CV </a>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .bio-main {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .page-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .bio-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .bio-section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .bio-section h2 {
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .experience-item {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--spacing-md);
+  }
+
+  .experience-item h3 {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .date {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  @media (max-width: 768px) {
+    .bio-main {
+      padding-top: 100px;
+    }
+  }
+</style>

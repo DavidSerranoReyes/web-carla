@@ -1,43 +1,138 @@
-# Astro Starter Kit: Minimal
+# Web Carla - Portfolio Cinematográfico
 
-```sh
-npm create astro@latest -- --template minimal
+Portfolio personal dinámico construido con Astro y React, con modo oscuro, soporte multiidioma y diseño futurista.
+
+## 🚀 Características
+
+- ✨ Diseño dinámico con contrastes blanco y negro
+- 🌓 Modo oscuro/claro
+- 🌍 Multiidioma (Español/Inglés)
+- 🎬 Video de fondo en la página principal
+- 💫 Animaciones y transiciones suaves
+- 🎨 Botones futuristas redondeados
+- 📱 Diseño responsive
+- ⚡ Rendimiento optimizado con Astro
+
+## 🛠️ Stack Tecnológico
+
+- **Astro 5.x** - Framework principal
+- **React 19.x** - Componentes interactivos
+- **TypeScript** - Type safety
+- **CSS3** - Estilos personalizados
+- **ESLint** - Linting
+- **Prettier** - Formateo de código
+- **Fuente Comfortaa** - Tipografía
+
+## 📁 Estructura del Proyecto
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
+web-carla/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/          # Componentes React
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── LanguageToggle.tsx
+│   │   └── VideoBackground.tsx
+│   ├── layouts/
+│   │   └── Layout.astro     # Layout principal
+│   ├── pages/               # Páginas de la web
+│   │   ├── index.astro      # Home
+│   │   ├── portfolio.astro  # Portfolio
+│   │   ├── bio.astro        # Biografía
+│   │   └── contact.astro    # Contacto
+│   ├── styles/              # Estilos CSS
+│   │   ├── global.css
+│   │   ├── Header.css
+│   │   ├── Footer.css
+│   │   ├── ThemeToggle.css
+│   │   ├── LanguageToggle.css
+│   │   └── VideoBackground.css
+│   ├── types/
+│   │   └── index.ts         # Tipos TypeScript
+│   └── utils/
+│       └── i18n.ts          # Internacionalización
+├── public/
+│   └── videos/              # Videos para el home
+├── agents.md                # Documentación del proyecto
+├── .eslintrc.cjs
+├── .prettierrc
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+# Instalar dependencias
+npm install
 
-Any static assets, like images, can be placed in the `public/` directory.
+# Iniciar servidor de desarrollo
+npm run dev
 
-## 🧞 Commands
+# Build para producción
+npm run build
 
-All commands are run from the root of the project, from a terminal:
+# Preview del build
+npm run preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📝 Configuración del Video de Fondo
 
-## 👀 Want to learn more?
+Para agregar tu video de fondo:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Coloca tu archivo de video en `/public/videos/`
+2. Renómbralo como `background.mp4` o actualiza la ruta en `VideoBackground.tsx`
+3. Se recomienda un video optimizado para web (formato MP4, H.264)
+
+## 🎨 Personalización
+
+### Colores
+
+Los colores se pueden personalizar en `src/styles/global.css`:
+
+```css
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-accent: #000000;
+  /* ... más variables */
+}
+```
+
+### Traducciones
+
+Para agregar o modificar traducciones, edita `src/utils/i18n.ts`.
+
+## 📱 Secciones
+
+- **Home**: Página principal con video de fondo a pantalla completa
+- **Portfolio**: Galería de proyectos (Films, Artículos Académicos, Crítica Cinematográfica)
+- **Bio**: Información biográfica y descarga de CV
+- **Contacto**: Información de contacto y formulario
+
+## 🔧 Desarrollo
+
+El proyecto está configurado con:
+
+- TypeScript en modo strict
+- ESLint para análisis de código
+- Prettier para formateo consistente
+- Configuración para React y Astro
+
+## � Despliegue
+
+Este proyecto puede desplegarse en cualquier plataforma que soporte sitios estáticos:
+
+- Vercel
+- Netlify
+- GitHub Pages
+- Cloudflare Pages
+
+## 👤 Autor
+
+Carla
+
+## 📄 Licencia
+
+Todos los derechos reservados © 2025

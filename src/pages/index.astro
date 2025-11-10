@@ -1,16 +1,81 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import VideoBackground from '../components/VideoBackground';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home - Carla Portfolio">
+  <Header client:load />
+  <VideoBackground client:load />
+
+  <main class="home-main">
+    <div class="container">
+      <div class="home-content">
+        <h1 class="home-title fade-in">Carla</h1>
+        <p class="home-subtitle fade-in">Portfolio Cinematográfico</p>
+        <div class="home-cta fade-in">
+          <a href="/portfolio" class="btn btn-primary">Ver Portfolio</a>
+          <a href="/contact" class="btn">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .home-main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-content {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .home-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    animation-delay: 0.2s;
+  }
+
+  .home-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    animation-delay: 0.4s;
+  }
+
+  .home-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    animation-delay: 0.6s;
+  }
+
+  @media (max-width: 768px) {
+    .home-content {
+      padding: var(--spacing-md) 0;
+    }
+
+    .home-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .home-cta .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

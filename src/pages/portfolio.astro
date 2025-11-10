@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+---
+
+<Layout title="Portfolio - Carla">
+  <Header client:load />
+
+  <main class="portfolio-main">
+    <div class="container">
+      <h1 class="page-title fade-in">Portfolio</h1>
+
+      <section class="portfolio-section fade-in">
+        <h2>Films</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <h3>Proyecto 1</h3>
+            <p>Descripción del proyecto cinematográfico.</p>
+          </div>
+          <div class="portfolio-card">
+            <h3>Proyecto 2</h3>
+            <p>Descripción del proyecto cinematográfico.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section fade-in">
+        <h2>Artículos Académicos</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <h3>Artículo 1</h3>
+            <p>Descripción del artículo académico.</p>
+          </div>
+          <div class="portfolio-card">
+            <h3>Artículo 2</h3>
+            <p>Descripción del artículo académico.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section fade-in">
+        <h2>Crítica Cinematográfica</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <h3>Crítica 1</h3>
+            <p>Descripción de la crítica cinematográfica.</p>
+          </div>
+          <div class="portfolio-card">
+            <h3>Crítica 2</h3>
+            <p>Descripción de la crítica cinematográfica.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .portfolio-main {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .page-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .portfolio-section {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .portfolio-section h2 {
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .portfolio-card {
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+  }
+
+  .portfolio-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .portfolio-card h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-main {
+      padding-top: 100px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
