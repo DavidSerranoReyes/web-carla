@@ -5,9 +5,11 @@ import Footer from '../components/Footer';
 ---
 
 <Layout title="Portfolio - Carla">
-  <Header client:load />
+  <div transition:persist="header">
+    <Header client:load />
+  </div>
 
-  <main class="portfolio-main">
+  <main class="portfolio-main" transition:animate="slide">
     <div class="container">
       <h1 class="page-title fade-in">Portfolio</h1>
 
@@ -55,7 +57,9 @@ import Footer from '../components/Footer';
     </div>
   </main>
 
-  <Footer />
+  <div transition:persist="footer">
+    <Footer />
+  </div>
 </Layout>
 
 <style>
