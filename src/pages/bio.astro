@@ -3,8 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CVDownload from '../components/CVDownload';
-import Biography from '../components/Biography';
-import GallerySection from '../components/GallerySection';
 ---
 
 <Layout title="Bio - Carla">
@@ -13,28 +11,131 @@ import GallerySection from '../components/GallerySection';
   </div>
 
   <main class="bio-main" transition:animate="slide">
-    <div class="container">
-      <h1 class="page-title fade-in">Carla Larrea Sánchez</h1>
+    <!-- Foto de Perfil -->
+    <section class="profile-hero">
+      <div class="profile-image-container">
+        <img src="/images/bio/profile.jpg" alt="Carla Larrea Sánchez" class="profile-image" />
+      </div>
+      <h1 class="profile-name">Carla Larrea Sánchez</h1>
+    </section>
 
-      <!-- Foto de Perfil -->
-      <div class="profile-section fade-in">
-        <div class="profile-image-container">
-          <img src="/images/bio/profile.jpg" alt="Carla Larrea Sánchez" class="profile-image" />
+    <!-- Bio con imágenes integradas -->
+    <div class="bio-scroll-container">
+      <!-- Párrafo 1 -->
+      <section class="bio-section">
+        <div class="text-content">
+          <p class="bio-text" data-lang-es>
+            Soy mujer, latinoamericana, andina, cineasta, activista por los derechos humanos con
+            perspectiva de género interseccional, antirracista y decolonial. Soy directora, editora,
+            productora y guionista. Considero al cine y el audiovisual como herramientas de posibles
+            reflexiones y transformaciones sociales.
+          </p>
+          <p class="bio-text" data-lang-en style="display: none;">
+            I am a woman, Latin American, Andean, filmmaker, and human rights activist with an
+            intersectional, anti-racist, and decolonial gender perspective. I am a director, editor,
+            producer, and screenwriter. I consider cinema and audiovisual media as tools for
+            possible reflections and social transformations.
+          </p>
         </div>
-      </div>
+        <div class="image-background image-left">
+          <img src="/images/bio/gallery4.jpg" alt="Gallery 4" />
+        </div>
+      </section>
 
-      <div class="bio-content fade-in">
-        <Biography client:load />
+      <!-- Párrafo 2 -->
+      <section class="bio-section">
+        <div class="text-content">
+          <p class="bio-text" data-lang-es>
+            Soy graduada del Centro de Capacitación Cinematográfica (México) y Magíster en Derechos
+            Humanos por la Universidad Regional del Noroeste del Estado de Rio Grande do Sul
+            (Brasil). Fui residente de COOFILM, segunda edición (España), y he participado en varios
+            laboratorios y mercados de cine y audiovisual desde el 2018, como directora, guionista y
+            productora.
+          </p>
+          <p class="bio-text" data-lang-en style="display: none;">
+            I graduated from the Centro de Capacitación Cinematográfica (Mexico) and hold a Master's
+            degree in Human Rights from the Regional University of Northwestern Rio Grande do Sul
+            (Brazil). I was a resident of COOFILM, second edition (Spain), and have participated in
+            various film and audiovisual laboratories and markets since 2018, as a director,
+            screenwriter, and producer.
+          </p>
+        </div>
+        <div class="image-background image-right">
+          <img src="/images/bio/gallery2.jpg" alt="Gallery 2" />
+        </div>
+      </section>
 
-        <!-- Galería de Fotos -->
-        <GallerySection client:load />
+      <!-- Párrafo 3 -->
+      <section class="bio-section">
+        <div class="text-content">
+          <p class="bio-text" data-lang-es>
+            He sido jurado de varios premios y festivales tanto en Ecuador (Festival de Cine de
+            Guayaquil, Premio Ernesto Albán del Municipio de Quito) como en el extranjero
+            (Ceceachero Film Festival, 8º CBFF Festival Internacional en Vigo, FENACIR).
+          </p>
+          <p class="bio-text" data-lang-en style="display: none;">
+            I have served as a jury member for several awards and festivals both in Ecuador
+            (Guayaquil Film Festival, Ernesto Albán Award from the Municipality of Quito) and abroad
+            (Ceceachero Film Festival, 8º CBFF International Festival in Vigo, FENACIR).
+          </p>
+        </div>
+        <div class="image-background image-left">
+          <img src="/images/bio/gallery7.jpg" alt="Gallery 7" />
+        </div>
+      </section>
 
-        <section class="bio-section cv-section">
-          <h2>Curriculum Vitae</h2>
-          <CVDownload client:load />
-        </section>
-      </div>
+      <!-- Párrafo 4 -->
+      <section class="bio-section">
+        <div class="text-content">
+          <p class="bio-text" data-lang-es>
+            También me desempeño como investigadora y docente universitaria. Desde septiembre de
+            2025, trabajo como docente en las carreras de Educación Básica y Educación Inicial de la
+            Universidad Politécnica Estatal del Carchi, dictando las asignaturas de Derechos Humanos
+            y Derechos Humanos y Educación.
+          </p>
+          <p class="bio-text" data-lang-en style="display: none;">
+            I also work as a researcher and university professor. Since September 2025, I have been
+            teaching in the Basic Education and Early Childhood Education programs at the State
+            Polytechnic University of Carchi, delivering courses on Human Rights and Human Rights
+            and Education.
+          </p>
+        </div>
+        <div class="image-background image-right">
+          <img src="/images/bio/gallery8.jpg" alt="Gallery 8" />
+        </div>
+      </section>
+
+      <!-- Párrafo 5 -->
+      <section class="bio-section">
+        <div class="text-content">
+          <p class="bio-text" data-lang-es>
+            En mi ejercicio profesional articulo el arte, especialmente el cine, la academia y los
+            Derechos Humanos para gestar proyectos sociales y cinematográficos interseccionales e
+            interdisciplinarios desde una perspectiva decolonial, anticapitalista y antipatriarcal.
+          </p>
+          <p class="bio-text" data-lang-en style="display: none;">
+            In my professional practice, I articulate art, especially cinema, academia, and Human
+            Rights to create intersectional and interdisciplinary social and cinematographic
+            projects from a decolonial, anti-capitalist, and anti-patriarchal perspective.
+          </p>
+        </div>
+        <div class="image-background image-left">
+          <img src="/images/bio/gallery3.jpg" alt="Gallery 3" />
+        </div>
+      </section>
     </div>
+
+    <!-- CV Section con imagen -->
+    <section class="cv-section-container">
+      <div class="cv-content">
+        <h2 class="cv-title" data-lang-es>Curriculum Vitae</h2>
+        <h2 class="cv-title" data-lang-en style="display: none;">Curriculum Vitae</h2>
+        <CVDownload client:load />
+      </div>
+      <div class="image-background image-right">
+        <img src="/images/bio/gallery5.jpg" alt="Gallery 5" />
+      </div>
+    </section>
   </main>
 
   <div transition:persist="footer">
@@ -42,40 +143,89 @@ import GallerySection from '../components/GallerySection';
   </div>
 </Layout>
 
+<script>
+  function initBioPage() {
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px',
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.bio-section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    document.querySelectorAll('.cv-section-container').forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Language toggle
+    function updateLanguage() {
+      const lang = localStorage.getItem('language') || 'es';
+
+      document.querySelectorAll('[data-lang-es]').forEach((el) => {
+        (el as HTMLElement).style.display = lang === 'es' ? '' : 'none';
+      });
+
+      document.querySelectorAll('[data-lang-en]').forEach((el) => {
+        (el as HTMLElement).style.display = lang === 'en' ? '' : 'none';
+      });
+    }
+
+    updateLanguage();
+    window.addEventListener('storage', updateLanguage);
+  }
+
+  // Inicializar al cargar la página
+  initBioPage();
+
+  // Re-inicializar después de las transiciones de Astro
+  document.addEventListener('astro:after-swap', initBioPage);
+</script>
+
 <style>
   .bio-main {
     min-height: 100vh;
-    padding-top: 120px;
-    padding-bottom: var(--spacing-xl);
+    padding-top: 80px;
+    position: relative;
+    overflow-x: hidden;
   }
 
-  .page-title {
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-  }
-
-  /* Sección de Perfil */
-  .profile-section {
+  /* Profile Hero Section */
+  .profile-hero {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    min-height: 60vh;
+    padding: var(--spacing-xl) var(--spacing-md);
     margin-bottom: var(--spacing-xl);
-    animation: fadeIn 0.8s ease-out;
   }
 
   .profile-image-container {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid var(--color-accent);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 5px solid var(--color-accent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    margin-bottom: var(--spacing-lg);
     transition: all var(--transition-normal);
+    animation: fadeIn 1s ease-out;
   }
 
   .profile-image-container:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
   }
 
   .profile-image {
@@ -89,205 +239,320 @@ import GallerySection from '../components/GallerySection';
     transform: scale(1.1);
   }
 
-  .bio-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .bio-section {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .bio-section h2 {
-    margin-bottom: var(--spacing-md);
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: var(--spacing-sm);
-  }
-
-  .experience-item {
-    margin-bottom: var(--spacing-md);
-    padding: var(--spacing-md);
-    border-left: 3px solid var(--color-accent);
-    padding-left: var(--spacing-md);
-  }
-
-  .experience-item h3 {
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .date {
-    font-size: 0.9rem;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  /* Estilos adicionales para biografía */
-  :global(.institution) {
-    font-weight: 500;
-    color: var(--color-text);
-    margin-bottom: 0.25rem;
-  }
-
-  :global(.location) {
-    font-style: italic;
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-  }
-
-  :global(.subjects) {
-    margin-top: var(--spacing-sm);
-    padding: var(--spacing-sm);
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: var(--radius-sm);
-  }
-
-  [data-theme='light'] :global(.subjects) {
-    background: rgba(0, 0, 0, 0.02);
-  }
-
-  :global(.achievements) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-  }
-
-  :global(.achievement-item) {
-    padding: var(--spacing-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-normal);
-  }
-
-  :global(.achievement-item:hover) {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
-  }
-
-  :global(.achievement-item h4) {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-accent);
-    font-size: 1.1rem;
-  }
-
-  :global(.achievement-item ul) {
-    list-style: none;
-    padding: 0;
-  }
-
-  :global(.achievement-item li) {
-    padding: 0.25rem 0;
-    padding-left: var(--spacing-sm);
-    position: relative;
-  }
-
-  :global(.achievement-item li::before) {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-  }
-
-  /* Sección de CV */
-  .cv-section {
+  .profile-name {
+    font-size: 3rem;
     text-align: center;
-    padding: var(--spacing-lg);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: rgba(0, 0, 0, 0.05);
-    transition: all var(--transition-normal);
+    font-weight: 700;
+    animation: fadeIn 1.2s ease-out;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  [data-theme='light'] .cv-section {
-    background: rgba(0, 0, 0, 0.02);
-  }
-
-  .cv-section:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
-  }
-
-  .cv-section h2 {
-    border-bottom: none;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .cv-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .cv-buttons .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    min-width: 280px;
-    justify-content: center;
-    font-size: 1.1rem;
-    padding: var(--spacing-sm) var(--spacing-lg);
-  }
-
-  .cv-buttons .btn svg {
-    transition: transform var(--transition-fast);
-  }
-
-  .cv-buttons .btn:hover svg {
-    transform: scale(1.1);
-  }
-
-  /* Estilos para el componente CVDownload */
-  :global(.cv-btn) {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    min-width: 280px;
-    justify-content: center;
-    font-size: 1.1rem;
-    padding: var(--spacing-sm) var(--spacing-lg);
-  }
-
-  /* Galería de Fotos */
-  :global(.gallery-section) {
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
-    padding-bottom: var(--spacing-lg);
-  }
-
-  :global(.photo-gallery) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-  }
-
-  :global(.gallery-item) {
+  /* Bio Scroll Container */
+  .bio-scroll-container {
     position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Bio Sections */
+  .bio-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .bio-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Text Content */
+  .text-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  [data-theme='light'] .text-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1a1a1a;
+  }
+
+  .bio-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .text-content .bio-text {
+    color: inherit;
+  }
+
+  /* Image Backgrounds */
+  .image-background {
+    position: absolute;
+    top: 0;
+    width: 55%;
+    height: 100%;
     overflow: hidden;
-    border-radius: var(--radius-md);
-    aspect-ratio: 4 / 3;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all var(--transition-normal);
+    z-index: 1;
   }
 
-  :global(.gallery-item:hover) {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  .image-left {
+    left: 0;
   }
 
-  :global(.gallery-image) {
+  .image-right {
+    right: 0;
+  }
+
+  .image-background img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow);
+    transition: transform 0.3s ease;
   }
 
-  :global(.gallery-item:hover .gallery-image) {
-    transform: scale(1.1);
+  /* Force fade of image edges using CSS masks (works independent of page background) */
+  .image-left img {
+    /* Use masks so fade works regardless of page background */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+  }
+
+  .image-right img {
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+  }
+
+  .bio-section:hover .image-background img {
+    transform: scale(1.05);
+  }
+
+  /* Gradient overlays */
+  .image-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .image-left::after {
+    right: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  [data-theme='light'] .image-left::after {
+    /* Disable white overlay so mask fade is visible */
+    background: none;
+  }
+
+  .image-right::after {
+    left: 0;
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  [data-theme='light'] .image-right::after {
+    background: none;
+  }
+
+  /* Image Only Sections */
+  .bio-section.image-only {
+    min-height: 70vh;
+    padding: 0;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .image-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .image-full::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
+  }
+
+  [data-theme='light'] .image-full::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  }
+
+  .image-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .bio-section.image-only:hover .image-full img {
+    transform: scale(1.08);
+  }
+
+  /* CV Section */
+  .cv-section-container {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+
+  .cv-section-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cv-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-normal);
+    color: #ffffff;
+  }
+
+  [data-theme='light'] .cv-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1a1a1a;
+  }
+
+  .cv-content:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  [data-theme='light'] .cv-content:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  }
+
+  .cv-section-container .image-background {
+    z-index: 1;
+  }
+
+  .cv-section-container:hover .image-background img {
+    transform: scale(1.05);
+  }
+
+  /* Ensure CV background image also fades toward content */
+  .cv-section-container .image-right img {
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-mode: alpha;
+  }
+
+  .cv-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cv-content .cv-title {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .image-background {
+      width: 50%;
+    }
   }
 
   @media (max-width: 768px) {
@@ -300,23 +565,45 @@ import GallerySection from '../components/GallerySection';
       height: 220px;
     }
 
-    .photo-gallery {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-sm);
+    .profile-name {
+      font-size: 2rem;
     }
 
-    .cv-section {
-      padding: var(--spacing-md);
+    .bio-section {
+      min-height: 60vh;
+      padding: var(--spacing-lg) var(--spacing-sm);
     }
 
-    .cv-buttons {
-      flex-direction: column;
-      gap: var(--spacing-sm);
+    .text-content {
+      padding: var(--spacing-lg);
+      max-width: 90%;
     }
 
-    .cv-buttons .btn {
+    .bio-text {
+      font-size: 1rem;
+    }
+
+    .image-background {
       width: 100%;
-      max-width: 300px;
+      opacity: 0.3;
+    }
+
+    .image-left,
+    .image-right {
+      left: 0;
+      right: 0;
+    }
+
+    .cv-section-container {
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .cv-content {
+      padding: var(--spacing-lg);
+    }
+
+    .cv-title {
+      font-size: 1.5rem;
     }
   }
 </style>
