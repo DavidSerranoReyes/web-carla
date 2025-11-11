@@ -22,6 +22,7 @@ export interface Translation {
   bio: {
     title: string;
     downloadCV: string;
+    gallery: string;
   };
   contact: {
     title: string;

@@ -21,6 +21,7 @@ const translations: Record<Language, Translation> = {
     bio: {
       title: 'Biografía',
       downloadCV: 'Descargar CV',
+      gallery: 'Galería',
     },
     contact: {
       title: 'Contacto',
@@ -48,6 +49,7 @@ const translations: Record<Language, Translation> = {
     bio: {
       title: 'Biography',
       downloadCV: 'Download CV',
+      gallery: 'Gallery',
     },
     contact: {
       title: 'Contact',

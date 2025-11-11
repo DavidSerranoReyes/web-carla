@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ContactInfo from '../components/ContactInfo';
+import ContactForm from '../components/ContactForm';
 ---
 
 <Layout title="Contacto - Carla">
@@ -14,48 +16,9 @@ import Footer from '../components/Footer';
       <h1 class="page-title fade-in">Contacto</h1>
 
       <div class="contact-content fade-in">
-        <div class="contact-info">
-          <div class="contact-item">
-            <h3>📧 Email</h3>
-            <p><a href="mailto:carla@example.com">carla@example.com</a></p>
-          </div>
+        <ContactInfo client:load />
 
-          <div class="contact-item">
-            <h3>📱 Teléfono</h3>
-            <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
-          </div>
-
-          <div class="contact-item">
-            <h3>🌐 Redes Sociales</h3>
-            <div class="social-links">
-              <a href="#" class="btn">LinkedIn</a>
-              <a href="#" class="btn">Instagram</a>
-              <a href="#" class="btn">Twitter</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <h2>Enviar mensaje</h2>
-          <form>
-            <div class="form-group">
-              <label for="name">Nombre</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="message">Mensaje</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>
-        </div>
+        <ContactForm client:load />
       </div>
     </div>
   </main>
@@ -85,56 +48,142 @@ import Footer from '../components/Footer';
     gap: var(--spacing-lg);
   }
 
-  .contact-info {
+  :global(.contact-info) {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
   }
 
-  .contact-item {
+  :global(.contact-item) {
     padding: var(--spacing-md);
     border: 2px solid var(--color-border);
     border-radius: var(--radius-md);
     transition: all var(--transition-normal);
   }
 
-  .contact-item:hover {
+  :global(.contact-item:hover) {
     border-color: var(--color-accent);
     transform: translateY(-2px);
   }
 
-  .contact-item h3 {
+  :global(.contact-item h3) {
     margin-bottom: var(--spacing-sm);
   }
 
-  .social-links {
-    display: flex;
-    gap: var(--spacing-sm);
-    flex-wrap: wrap;
+  :global(.contact-item a) {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
   }
 
-  .contact-form {
+  :global(.contact-item a:hover) {
+    opacity: 0.8;
+  }
+
+  /* Social networks styles */
+  :global(.social-networks) {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  :global(.social-links-contact) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+  }
+
+  :global(.social-link-contact) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+  }
+
+  :global(.social-link-contact svg) {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  :global(.social-link-contact.instagram) {
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+    color: white;
+    border-color: transparent;
+  }
+
+  :global(.social-link-contact.instagram:hover) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(240, 148, 51, 0.4);
+  }
+
+  :global(.social-link-contact.facebook) {
+    background: #1877f2;
+    color: white;
+    border-color: transparent;
+  }
+
+  :global(.social-link-contact.facebook:hover) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
+  }
+
+  :global(.social-link-contact.linkedin) {
+    background: #0a66c2;
+    color: white;
+    border-color: transparent;
+  }
+
+  :global(.social-link-contact.linkedin:hover) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10, 102, 194, 0.4);
+  }
+
+  :global(.social-link-contact.vimeo) {
+    background: #1ab7ea;
+    color: white;
+    border-color: transparent;
+  }
+
+  :global(.social-link-contact.vimeo:hover) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(26, 183, 234, 0.4);
+  }
+
+  :global(.contact-form) {
     padding: var(--spacing-md);
     border: 2px solid var(--color-border);
     border-radius: var(--radius-md);
   }
 
-  .contact-form h2 {
+  :global(.contact-form h2) {
     margin-bottom: var(--spacing-md);
   }
 
-  .form-group {
+  :global(.form-group) {
     margin-bottom: var(--spacing-md);
   }
 
-  .form-group label {
+  :global(.form-group label) {
     display: block;
     margin-bottom: var(--spacing-xs);
     font-weight: 500;
   }
 
-  .form-group input,
-  .form-group textarea {
+  :global(.form-group input),
+  :global(.form-group textarea) {
     width: 100%;
     padding: var(--spacing-sm);
     border: 2px solid var(--color-border);
@@ -145,8 +194,8 @@ import Footer from '../components/Footer';
     transition: border-color var(--transition-fast);
   }
 
-  .form-group input:focus,
-  .form-group textarea:focus {
+  :global(.form-group input:focus),
+  :global(.form-group textarea:focus) {
     outline: none;
     border-color: var(--color-accent);
   }
@@ -160,8 +209,8 @@ import Footer from '../components/Footer';
       grid-template-columns: 1fr;
     }
 
-    .social-links {
-      flex-direction: column;
+    :global(.social-links-contact) {
+      grid-template-columns: 1fr;
     }
   }
 </style>
