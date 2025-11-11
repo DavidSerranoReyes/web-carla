@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FilmCard from '../components/FilmCard';
 ---
 
 <Layout title="Portfolio - Carla">
@@ -14,17 +15,42 @@ import Footer from '../components/Footer';
       <h1 class="page-title fade-in">Portfolio</h1>
 
       <section class="portfolio-section fade-in">
-        <h2>Films</h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-card">
-            <h3>Proyecto 1</h3>
-            <p>Descripción del proyecto cinematográfico.</p>
-          </div>
-          <div class="portfolio-card">
-            <h3>Proyecto 2</h3>
-            <p>Descripción del proyecto cinematográfico.</p>
-          </div>
-        </div>
+        <h2 class="section-title" data-es="Films" data-en="Films">Films</h2>
+
+        <FilmCard
+          client:load
+          title="INDELEBLE"
+          titleEn="INDELIBLE"
+          year="2016"
+          duration="11:46 min"
+          country="México"
+          posterImage="/images/films/indeleble.jpg"
+          galleryImages={[
+            '/images/films/indeleble1.jpg',
+            '/images/films/indeleble2.jpg',
+            '/images/films/indeleble3.jpg',
+          ]}
+          synopsis="Una noche antes de irse a estudiar al extranjero, José sale de fiesta con Milena, su mejor amiga. Después de un coqueteo mutuo, finalmente, Milena rechaza a José. Al concluir la noche, sucederá algo que cambiará su relación y a ellos, para siempre."
+          synopsisEn="The night before leaving to study abroad, José goes out partying with Milena, his best friend. After mutual flirting, Milena finally rejects José. At the end of the night, something will happen that will change their relationship and them, forever."
+          director="Carla Larrea Sánchez"
+          festivals={[
+            'Festival Internacional de Cine de Morelia 2016 - Selección oficial',
+            'Festival Pantalla de Cristal 2016 - Premio "Mejor Banda Sonora"',
+            'CECEACHERO FILM FEST 2017 - Premio del público',
+            'CHOUFTOUHONNA, Tunis International Feminist Art Festival 2017 - Premio "Coup de coeur"',
+            'Festival Internacional de Cine de Quito 2017',
+          ]}
+          festivalsEn={[
+            'Morelia International Film Festival 2016 - Official Selection',
+            'Pantalla de Cristal Festival 2016 - "Best Soundtrack" Award',
+            'CECEACHERO FILM FEST 2017 - Audience Award',
+            'CHOUFTOUHONNA, Tunis International Feminist Art Festival 2017 - "Coup de coeur" Award',
+            'Quito International Film Festival 2017',
+          ]}
+          pdfUrl="/films/indeleble-ficha.pdf"
+          trailerUrl="https://www.youtube.com/watch?v=rEprGd9fESk"
+          fullFilmUrl="https://vimeo.com/176618936"
+        />
       </section>
 
       <section class="portfolio-section fade-in">
@@ -107,6 +133,252 @@ import Footer from '../components/Footer';
     margin-bottom: var(--spacing-sm);
   }
 
+  /* FilmCard Styles */
+  :global(.film-card) {
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    transition: all var(--transition-normal);
+  }
+
+  :global(.film-card:hover) {
+    border-color: var(--color-accent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Poster principal más grande y prominente */
+  :global(.film-poster-large) {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+  }
+
+  :global(.film-poster-large img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+    filter: none;
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+
+  :global(.film-card:hover .film-poster-large img) {
+    transform: scale(1.03);
+  }
+
+  :global(.film-overlay) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.85) 40%,
+      rgba(0, 0, 0, 0.6) 70%,
+      transparent 100%
+    );
+    padding: var(--spacing-xl);
+    color: white;
+  }
+
+  :global(.film-title) {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  :global(.film-meta) {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  :global(.film-director) {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+  }
+
+  :global(.film-content) {
+    padding: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Galería de imágenes más compacta */
+  :global(.film-gallery) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  :global(.film-gallery img) {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    filter: none;
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+
+  :global(.film-gallery img:hover) {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Contenido centrado y bien espaciado */
+  :global(.film-info-center) {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  :global(.film-section) {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+
+  :global(.film-section h3) {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  :global(.film-synopsis) {
+    line-height: 1.9;
+    text-align: justify;
+    font-size: 1.1rem;
+    padding: 0 var(--spacing-md);
+  }
+
+  :global(.film-festivals) {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+  }
+
+  :global(.film-festivals li) {
+    padding: var(--spacing-sm) var(--spacing-md);
+    position: relative;
+    padding-left: var(--spacing-xl);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+  }
+
+  :global(.film-festivals li::before) {
+    content: '★';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  /* Trailer en miniatura */
+  :global(.trailer-thumbnail) {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all var(--transition-normal);
+  }
+
+  :global(.trailer-thumbnail:hover) {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  :global(.trailer-thumbnail img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: none;
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+
+  :global(.play-button) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all var(--transition-normal);
+  }
+
+  :global(.trailer-thumbnail:hover .play-button) {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  :global(.trailer-embed) {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+  }
+
+  :global(.trailer-embed iframe) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  /* Botones de acción más compactos */
+  :global(.film-actions) {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  :global(.btn-action) {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 2px solid var(--color-accent);
+    background: transparent;
+    color: var(--color-text);
+    border-radius: var(--radius-full);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 200px;
+  }
+
+  :global(.btn-action:hover) {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+  }
+
+  :global(.btn-action:active) {
+    transform: translateY(0);
+  }
+
   @media (max-width: 768px) {
     .portfolio-main {
       padding-top: 100px;
@@ -115,5 +387,84 @@ import Footer from '../components/Footer';
     .portfolio-grid {
       grid-template-columns: 1fr;
     }
+
+    :global(.film-poster-large) {
+      height: 400px;
+    }
+
+    :global(.film-title) {
+      font-size: 2rem;
+    }
+
+    :global(.film-meta),
+    :global(.film-director) {
+      font-size: 0.95rem;
+    }
+
+    :global(.film-content) {
+      padding: var(--spacing-md);
+    }
+
+    :global(.film-section h3) {
+      font-size: 1.4rem;
+    }
+
+    :global(.film-synopsis) {
+      font-size: 1rem;
+      padding: 0;
+    }
+
+    :global(.film-gallery) {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--spacing-sm);
+    }
+
+    :global(.film-gallery img) {
+      height: 120px;
+    }
+
+    :global(.film-actions) {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    :global(.btn-action) {
+      min-width: 100%;
+      font-size: 0.9rem;
+    }
+
+    :global(.trailer-thumbnail),
+    :global(.trailer-embed) {
+      max-width: 100%;
+    }
   }
 </style>
+
+<script>
+  function updateLanguage() {
+    const currentLang = localStorage.getItem('language') || 'es';
+
+    // Update section titles
+    document.querySelectorAll('[data-es][data-en]').forEach((element) => {
+      const htmlElement = element as HTMLElement;
+      if (currentLang === 'en') {
+        htmlElement.textContent = htmlElement.getAttribute('data-en') || '';
+      } else {
+        htmlElement.textContent = htmlElement.getAttribute('data-es') || '';
+      }
+    });
+  }
+
+  // Update on page load
+  updateLanguage();
+
+  // Update when language changes
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'language') {
+      updateLanguage();
+    }
+  });
+
+  // Update after View Transitions
+  document.addEventListener('astro:after-swap', updateLanguage);
+</script>

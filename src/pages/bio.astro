@@ -334,28 +334,6 @@ import CVDownload from '../components/CVDownload';
     transition: transform 0.3s ease;
   }
 
-  /* Force fade of image edges using CSS masks (works independent of page background) */
-  .image-left img {
-    /* Use masks so fade works regardless of page background */
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    mask-mode: alpha;
-  }
-
-  .image-right img {
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    mask-mode: alpha;
-  }
-
   .bio-section:hover .image-background img {
     transform: scale(1.05);
   }
@@ -381,11 +359,6 @@ import CVDownload from '../components/CVDownload';
     );
   }
 
-  [data-theme='light'] .image-left::after {
-    /* Disable white overlay so mask fade is visible */
-    background: none;
-  }
-
   .image-right::after {
     left: 0;
     background: linear-gradient(
@@ -394,10 +367,6 @@ import CVDownload from '../components/CVDownload';
       rgba(0, 0, 0, 0.3) 40%,
       rgba(0, 0, 0, 1) 100%
     );
-  }
-
-  [data-theme='light'] .image-right::after {
-    background: none;
   }
 
   /* Image Only Sections */
@@ -513,17 +482,6 @@ import CVDownload from '../components/CVDownload';
 
   .cv-section-container:hover .image-background img {
     transform: scale(1.05);
-  }
-
-  /* Ensure CV background image also fades toward content */
-  .cv-section-container .image-right img {
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    mask-mode: alpha;
   }
 
   .cv-title {
