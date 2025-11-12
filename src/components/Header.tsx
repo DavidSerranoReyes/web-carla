@@ -35,13 +35,13 @@ export default function Header() {
             <a href={import.meta.env.BASE_URL} className="nav-link">
               {translation.nav.home}
             </a>
-            <a href={`${import.meta.env.BASE_URL}portfolio`} className="nav-link">
+            <a href={`${import.meta.env.BASE_URL}portfolio/`} className="nav-link">
               {translation.nav.portfolio}
             </a>
-            <a href={`${import.meta.env.BASE_URL}bio`} className="nav-link">
+            <a href={`${import.meta.env.BASE_URL}bio/`} className="nav-link">
               {translation.nav.bio}
             </a>
-            <a href={`${import.meta.env.BASE_URL}contact`} className="nav-link">
+            <a href={`${import.meta.env.BASE_URL}contact/`} className="nav-link">
               {translation.nav.contact}
             </a>
           </nav>

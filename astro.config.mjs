@@ -8,4 +8,8 @@ export default defineConfig({
   integrations: [react()],
   site: 'https://davidserranoreyes.github.io',
   base: '/web-carla',
+  trailingSlash: 'always',
+  build: {
+    format: 'directory'
+  }
 });
