@@ -197,12 +197,19 @@ const base = import.meta.env.BASE_URL;
   document.addEventListener('astro:after-swap', initBioPage);
 </script>
 
-<style is:global>
+<style>
   .bio-main {
     min-height: 100vh;
     padding-top: 80px;
     position: relative;
     overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Asegurar que body no tenga scroll horizontal */
+  :global(body) {
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* Profile Hero Section */
@@ -298,7 +305,7 @@ const base = import.meta.env.BASE_URL;
     color: #ffffff;
   }
 
-  [data-theme='light'] .text-content {
+  :global([data-theme='light']) .text-content {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
@@ -327,7 +334,7 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* Light mode - bordes redondeados que persisten */
-  [data-theme='light'] .image-background {
+  :global([data-theme='light']) .image-background {
     border-radius: var(--radius-lg);
   }
 
@@ -384,7 +391,7 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* Light mode - remover gradientes oscuros y agregar blancos */
-  [data-theme='light'] .image-left::after {
+  :global([data-theme='light']) .image-left::after {
     background: linear-gradient(
       to left,
       rgba(255, 255, 255, 0.95) 0%,
@@ -394,7 +401,7 @@ const base = import.meta.env.BASE_URL;
     );
   }
 
-  [data-theme='light'] .image-right::after {
+  :global([data-theme='light']) .image-right::after {
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.95) 0%,
@@ -437,7 +444,7 @@ const base = import.meta.env.BASE_URL;
     pointer-events: none;
   }
 
-  [data-theme='light'] .image-full::after {
+  :global([data-theme='light']) .image-full::after {
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.2) 0%,
@@ -493,7 +500,7 @@ const base = import.meta.env.BASE_URL;
     color: #ffffff;
   }
 
-  [data-theme='light'] .cv-content {
+  :global([data-theme='light']) .cv-content {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
@@ -507,7 +514,7 @@ const base = import.meta.env.BASE_URL;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
   }
 
-  [data-theme='light'] .cv-content:hover {
+  :global([data-theme='light']) .cv-content:hover {
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
   }
 
