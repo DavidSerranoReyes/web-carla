@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FilmCard from '../components/FilmCard';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Portfolio - Carla">
@@ -24,11 +26,11 @@ import FilmCard from '../components/FilmCard';
           year="2016"
           duration="11:46 min"
           country="México"
-          posterImage="/images/films/indeleble.jpg"
+          posterImage={`${base}images/films/indeleble.jpg`}
           galleryImages={[
-            '/images/films/indeleble1.jpg',
-            '/images/films/indeleble2.jpg',
-            '/images/films/indeleble3.jpg',
+            `${base}images/films/indeleble1.jpg`,
+            `${base}images/films/indeleble2.jpg`,
+            `${base}images/films/indeleble3.jpg`,
           ]}
           synopsis="Una noche antes de irse a estudiar al extranjero, José sale de fiesta con Milena, su mejor amiga. Después de un coqueteo mutuo, finalmente, Milena rechaza a José. Al concluir la noche, sucederá algo que cambiará su relación y a ellos, para siempre."
           synopsisEn="The night before leaving to study abroad, José goes out partying with Milena, his best friend. After mutual flirting, Milena finally rejects José. At the end of the night, something will happen that will change their relationship and them, forever."
@@ -47,7 +49,7 @@ import FilmCard from '../components/FilmCard';
             'CHOUFTOUHONNA, Tunis International Feminist Art Festival 2017 - "Coup de coeur" Award',
             'Quito International Film Festival 2017',
           ]}
-          pdfUrl="/films/indeleble-ficha.pdf"
+          pdfUrl={`${base}films/indeleble-ficha.pdf`}
           trailerUrl="https://www.youtube.com/watch?v=rEprGd9fESk"
           fullFilmUrl="https://vimeo.com/176618936"
         />

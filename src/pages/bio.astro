@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CVDownload from '../components/CVDownload';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Bio - Carla">
@@ -14,7 +16,11 @@ import CVDownload from '../components/CVDownload';
     <!-- Foto de Perfil -->
     <section class="profile-hero">
       <div class="profile-image-container">
-        <img src="/images/bio/profile.jpg" alt="Carla Larrea Sánchez" class="profile-image" />
+        <img
+          src={`${base}images/bio/profile.jpg`}
+          alt="Carla Larrea Sánchez"
+          class="profile-image"
+        />
       </div>
       <h1 class="profile-name">Carla Larrea Sánchez</h1>
     </section>
@@ -38,7 +44,7 @@ import CVDownload from '../components/CVDownload';
           </p>
         </div>
         <div class="image-background image-left">
-          <img src="/images/bio/gallery4.jpg" alt="Gallery 4" />
+          <img src={`${base}images/bio/gallery4.jpg`} alt="Gallery 4" />
         </div>
       </section>
 
@@ -61,7 +67,7 @@ import CVDownload from '../components/CVDownload';
           </p>
         </div>
         <div class="image-background image-right">
-          <img src="/images/bio/gallery2.jpg" alt="Gallery 2" />
+          <img src={`${base}images/bio/gallery2.jpg`} alt="Gallery 2" />
         </div>
       </section>
 
@@ -80,7 +86,7 @@ import CVDownload from '../components/CVDownload';
           </p>
         </div>
         <div class="image-background image-left">
-          <img src="/images/bio/gallery7.jpg" alt="Gallery 7" />
+          <img src={`${base}images/bio/gallery7.jpg`} alt="Gallery 7" />
         </div>
       </section>
 
@@ -101,7 +107,7 @@ import CVDownload from '../components/CVDownload';
           </p>
         </div>
         <div class="image-background image-right">
-          <img src="/images/bio/gallery8.jpg" alt="Gallery 8" />
+          <img src={`${base}images/bio/gallery8.jpg`} alt="Gallery 8" />
         </div>
       </section>
 
@@ -120,7 +126,7 @@ import CVDownload from '../components/CVDownload';
           </p>
         </div>
         <div class="image-background image-left">
-          <img src="/images/bio/gallery3.jpg" alt="Gallery 3" />
+          <img src={`${base}images/bio/gallery3.jpg`} alt="Gallery 3" />
         </div>
       </section>
     </div>
@@ -133,7 +139,7 @@ import CVDownload from '../components/CVDownload';
         <CVDownload client:load />
       </div>
       <div class="image-background image-right">
-        <img src="/images/bio/gallery5.jpg" alt="Gallery 5" />
+        <img src={`${base}images/bio/gallery5.jpg`} alt="Gallery 5" />
       </div>
     </section>
   </main>
