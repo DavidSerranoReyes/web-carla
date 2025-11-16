@@ -68,6 +68,41 @@
   align-items: center;
 }
 
+/* Botón hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--color-text);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {
@@ -75,30 +110,48 @@
   }
 
   .header-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    padding: 0 var(--spacing-sm);
+    position: relative;
   }
 
+  /* Mostrar botón hamburguesa */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Ocultar navegación por defecto */
   .nav {
-    flex: 1 1 100%;
-    order: 2;
-    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--color-bg);
+    flex-direction: column;
     justify-content: center;
-    gap: var(--spacing-xs);
+    align-items: center;
+    gap: var(--spacing-lg);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: var(--spacing-xl);
+  }
+
+  .nav.active {
+    left: 0;
   }
 
   .nav-link {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.2rem;
+    padding: var(--spacing-sm);
+    width: 100%;
+    text-align: center;
   }
 
+  /* Header actions siempre visibles */
   .header-actions {
-    flex: 1 1 100%;
-    order: 1;
-    justify-content: center;
-    gap: var(--spacing-sm);
+    margin-left: auto;
+    gap: var(--spacing-xs);
   }
 
   /* Hacer los botones más pequeños en móvil */
