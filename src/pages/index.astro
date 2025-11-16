@@ -17,8 +17,9 @@ import VideoBackground from '../components/VideoBackground';
         <h1 class="home-title fade-in">Carla Larrea Sánchez</h1>
         <p class="home-subtitle fade-in">Cineasta</p>
         <div class="home-cta fade-in">
-          <a href="/portfolio" class="btn btn-primary">Ver Portfolio</a>
-          <a href="/contact" class="btn">Contacto</a>
+          <a href={`${import.meta.env.BASE_URL}portfolio/`} class="btn btn-primary">Ver Portfolio</a
+          >
+          <a href={`${import.meta.env.BASE_URL}contact/`} class="btn">Contacto</a>
         </div>
       </div>
     </div>
@@ -138,8 +139,9 @@ import VideoBackground from '../components/VideoBackground';
     backdrop-filter: blur(10px);
   }
 
-  [data-theme='light'] .social-section {
-    background: rgba(255, 255, 255, 0.3);
+  :global([data-theme='light']) .social-section {
+    background: #ffffff;
+    backdrop-filter: none;
   }
 
   .social-links {
@@ -151,81 +153,45 @@ import VideoBackground from '../components/VideoBackground';
   }
 
   .social-link {
-    width: 60px;
-    height: 60px;
-    border-radius: var(--radius-full);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-normal);
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-  }
-
-  .social-link svg {
-    position: relative;
-    z-index: 2;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 10px;
     transition: transform var(--transition-normal);
   }
 
-  .social-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.1;
-    transition: opacity var(--transition-normal);
+  .social-link svg {
+    width: 44px;
+    height: 44px;
+    transition: transform var(--transition-normal);
   }
 
   .social-link:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
   }
 
   .social-link:hover svg {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 
-  .social-link:hover::before {
-    opacity: 1;
+  /* Colores de cada red social en los iconos */
+  .social-link.instagram svg {
+    color: #e4405f;
   }
 
-  /* Instagram - Gradiente */
-  .social-link.instagram {
-    background: linear-gradient(
-      45deg,
-      #f09433 0%,
-      #e6683c 25%,
-      #dc2743 50%,
-      #cc2366 75%,
-      #bc1888 100%
-    );
-    color: white;
-    border-color: #bc1888;
+  .social-link.facebook svg {
+    color: #1877f2;
   }
 
-  /* Facebook */
-  .social-link.facebook {
-    background: #1877f2;
-    color: white;
-    border-color: #1877f2;
+  .social-link.linkedin svg {
+    color: #0a66c2;
   }
 
-  /* LinkedIn */
-  .social-link.linkedin {
-    background: #0a66c2;
-    color: white;
-    border-color: #0a66c2;
-  }
-
-  /* Vimeo */
-  .social-link.vimeo {
-    background: #1ab7ea;
-    color: white;
-    border-color: #1ab7ea;
+  .social-link.vimeo svg {
+    color: #1ab7ea;
   }
 
   @media (max-width: 768px) {
@@ -251,14 +217,9 @@ import VideoBackground from '../components/VideoBackground';
       gap: var(--spacing-sm);
     }
 
-    .social-link {
-      width: 50px;
-      height: 50px;
-    }
-
     .social-link svg {
-      width: 24px;
-      height: 24px;
+      width: 36px;
+      height: 36px;
     }
   }
 </style>
