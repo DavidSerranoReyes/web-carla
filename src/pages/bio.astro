@@ -357,6 +357,7 @@ const base = import.meta.env.BASE_URL;
 
   .image-left::after {
     right: 0;
+    left: auto;
     background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0) 0%,
@@ -367,6 +368,7 @@ const base = import.meta.env.BASE_URL;
 
   .image-right::after {
     left: 0;
+    right: auto;
     background: linear-gradient(
       to left,
       rgba(0, 0, 0, 0) 0%,
@@ -383,7 +385,7 @@ const base = import.meta.env.BASE_URL;
       rgba(255, 255, 255, 0.7) 30%,
       rgba(255, 255, 255, 0.3) 60%,
       rgba(255, 255, 255, 0) 100%
-    );
+    ) !important;
   }
 
   [data-theme='light'] .image-right::after {
@@ -393,7 +395,7 @@ const base = import.meta.env.BASE_URL;
       rgba(255, 255, 255, 0.7) 30%,
       rgba(255, 255, 255, 0.3) 60%,
       rgba(255, 255, 255, 0) 100%
-    );
+    ) !important;
   }
 
   /* Image Only Sections */
