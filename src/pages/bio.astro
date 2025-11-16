@@ -197,7 +197,7 @@ const base = import.meta.env.BASE_URL;
   document.addEventListener('astro:after-swap', initBioPage);
 </script>
 
-<style>
+<style is:global>
   .bio-main {
     min-height: 100vh;
     padding-top: 80px;
@@ -261,6 +261,7 @@ const base = import.meta.env.BASE_URL;
     position: relative;
     width: 100%;
     max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* Bio Sections */
@@ -325,6 +326,11 @@ const base = import.meta.env.BASE_URL;
     z-index: 1;
   }
 
+  /* Light mode - bordes redondeados que persisten */
+  [data-theme='light'] .image-background {
+    border-radius: var(--radius-lg);
+  }
+
   .image-left {
     left: 0;
   }
@@ -377,25 +383,25 @@ const base = import.meta.env.BASE_URL;
     );
   }
 
-  /* Light mode - invertir gradientes */
+  /* Light mode - remover gradientes oscuros y agregar blancos */
   [data-theme='light'] .image-left::after {
     background: linear-gradient(
       to left,
       rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.7) 30%,
-      rgba(255, 255, 255, 0.3) 60%,
-      rgba(255, 255, 255, 0) 100%
-    ) !important;
+      rgba(255, 255, 255, 0.8) 20%,
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
   }
 
   [data-theme='light'] .image-right::after {
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.7) 30%,
-      rgba(255, 255, 255, 0.3) 60%,
-      rgba(255, 255, 255, 0) 100%
-    ) !important;
+      rgba(255, 255, 255, 0.8) 20%,
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
   }
 
   /* Image Only Sections */

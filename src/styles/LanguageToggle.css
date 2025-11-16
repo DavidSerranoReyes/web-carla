@@ -38,3 +38,12 @@
 .language-toggle:active {
   transform: translateY(0);
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .language-toggle {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    min-width: 50px;
+  }
+}

@@ -70,23 +70,39 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .header {
+    padding: var(--spacing-sm) 0;
+  }
+
   .header-content {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
+    padding: 0 var(--spacing-sm);
   }
 
   .nav {
+    flex: 1 1 100%;
+    order: 2;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .header-actions {
+    flex: 1 1 100%;
+    order: 1;
     justify-content: center;
     gap: var(--spacing-sm);
   }
 
-  .nav-link {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
-
-  .header-actions {
-    gap: var(--spacing-xs);
+  /* Hacer los botones más pequeños en móvil */
+  .header-actions > * {
+    transform: scale(0.85);
   }
 }
