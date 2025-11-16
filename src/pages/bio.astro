@@ -378,21 +378,21 @@ const base = import.meta.env.BASE_URL;
   /* Light mode - invertir gradientes */
   [data-theme='light'] .image-left::after {
     background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 40%,
-      rgba(255, 255, 255, 0.7) 70%,
-      rgba(255, 255, 255, 0.95) 100%
+      to left,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.7) 30%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0) 100%
     );
   }
 
   [data-theme='light'] .image-right::after {
     background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 40%,
-      rgba(255, 255, 255, 0.7) 70%,
-      rgba(255, 255, 255, 0.95) 100%
+      to right,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.7) 30%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0) 100%
     );
   }
 
