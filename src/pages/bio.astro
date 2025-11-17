@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
     <!-- Bio con imágenes integradas -->
     <div class="bio-scroll-container">
       <!-- Párrafo 1 -->
-      <section class="bio-section">
+      <section class="bio-section section-image-left">
         <div class="text-content">
           <p class="bio-text" data-lang-es>
             Soy mujer, latinoamericana, andina, cineasta, activista por los derechos humanos con
@@ -49,7 +49,7 @@ const base = import.meta.env.BASE_URL;
       </section>
 
       <!-- Párrafo 2 -->
-      <section class="bio-section">
+      <section class="bio-section section-image-right">
         <div class="text-content">
           <p class="bio-text" data-lang-es>
             Soy graduada del Centro de Capacitación Cinematográfica (México) y Magíster en Derechos
@@ -72,7 +72,7 @@ const base = import.meta.env.BASE_URL;
       </section>
 
       <!-- Párrafo 3 -->
-      <section class="bio-section">
+      <section class="bio-section section-image-left">
         <div class="text-content">
           <p class="bio-text" data-lang-es>
             He sido jurado de varios premios y festivales tanto en Ecuador (Festival de Cine de
@@ -91,7 +91,7 @@ const base = import.meta.env.BASE_URL;
       </section>
 
       <!-- Párrafo 4 -->
-      <section class="bio-section">
+      <section class="bio-section section-image-right">
         <div class="text-content">
           <p class="bio-text" data-lang-es>
             También me desempeño como investigadora y docente universitaria. Desde septiembre de
@@ -112,7 +112,7 @@ const base = import.meta.env.BASE_URL;
       </section>
 
       <!-- Párrafo 5 -->
-      <section class="bio-section">
+      <section class="bio-section section-image-left">
         <div class="text-content">
           <p class="bio-text" data-lang-es>
             En mi ejercicio profesional articulo el arte, especialmente el cine, la academia y los
@@ -264,6 +264,36 @@ const base = import.meta.env.BASE_URL;
       transform 0.6s ease;
   }
 
+  .bio-section.animate-in .text-content {
+    animation: slideInContent 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .bio-section.animate-in .image-background {
+    animation: fadeInImage 1s ease-out forwards;
+  }
+
+  @keyframes slideInContent {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInImage {
+    from {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .bio-section.animate-in,
   .cv-section-container.animate-in {
     opacity: 1;
@@ -282,6 +312,29 @@ const base = import.meta.env.BASE_URL;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bio-section:hover .text-content {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  :global([data-theme='light']) .bio-section:hover .text-content {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Mover el contenedor hacia la derecha cuando la foto está a la izquierda */
+  .section-image-left .text-content {
+    margin-left: auto;
+    margin-right: 50px;
+  }
+
+  /* Mover el contenedor hacia la izquierda cuando la foto está a la derecha */
+  .section-image-right .text-content {
+    margin-right: auto;
+    margin-left: 50px;
   }
 
   :global([data-theme='light']) .text-content {
@@ -327,11 +380,11 @@ const base = import.meta.env.BASE_URL;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .bio-section:hover .image-background img {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 
   .image-background::after {
@@ -347,21 +400,45 @@ const base = import.meta.env.BASE_URL;
   .image-left::after {
     right: 0;
     left: auto;
-    background: none;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.15) 40%,
+      rgba(0, 0, 0, 0.4) 70%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
   }
 
   .image-right::after {
     left: 0;
     right: auto;
-    background: none;
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.15) 40%,
+      rgba(0, 0, 0, 0.4) 70%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
   }
 
   :global([data-theme='light']) .image-left::after {
-    background: none;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.6) 30%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   :global([data-theme='light']) .image-right::after {
-    background: none;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.6) 30%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   .cv-section-container {
@@ -465,6 +542,9 @@ const base = import.meta.env.BASE_URL;
     .bio-section {
       min-height: 60vh;
       padding: var(--spacing-lg) var(--spacing-sm);
+      justify-content: center !important;
+      padding-left: var(--spacing-sm) !important;
+      padding-right: var(--spacing-sm) !important;
     }
 
     .text-content {
