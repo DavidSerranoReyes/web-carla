@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import VideoWithControl from '../components/VideoWithControl';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -13,7 +15,7 @@ import VideoWithControl from '../components/VideoWithControl';
   <div transition:persist="header">
     <Header client:load />
   </div>
-  <VideoWithControl client:load />
+  <VideoWithControl client:load baseUrl={base} />
 
   <main class="home-main" transition:animate="slide">
     <div class="container">

@@ -140,7 +140,7 @@ const base = import.meta.env.BASE_URL;
       <div class="cv-content">
         <h2 class="cv-title" data-lang-es>Curriculum Vitae</h2>
         <h2 class="cv-title" data-lang-en style="display: none;">Curriculum Vitae</h2>
-        <CVDownload client:load />
+        <CVDownload client:load baseUrl={base} />
       </div>
       <div class="image-background image-right">
         <img src={`${base}images/bio/gallery5.jpg`} alt="Gallery 5" />

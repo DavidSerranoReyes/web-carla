@@ -2,12 +2,16 @@ import { useRef } from 'react';
 import VideoBackground from './VideoBackground';
 import VideoAudioControl from './VideoAudioControl';
 
-export default function VideoWithControl() {
+interface VideoWithControlProps {
+  baseUrl?: string;
+}
+
+export default function VideoWithControl({ baseUrl = '/' }: VideoWithControlProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <>
-      <VideoBackground ref={videoRef} />
+      <VideoBackground ref={videoRef} baseUrl={baseUrl} />
       <VideoAudioControl videoRef={videoRef} />
     </>
   );

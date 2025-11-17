@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { getCurrentLanguage } from '../utils/i18n';
 import type { Language } from '../types';
 
-export default function CVDownload() {
+interface CVDownloadProps {
+  baseUrl?: string;
+}
+
+export default function CVDownload({ baseUrl = '/' }: CVDownloadProps) {
   const [language, setLanguage] = useState<Language>('es');
 
   useEffect(() => {
@@ -24,9 +28,8 @@ export default function CVDownload() {
 
   const handleCVClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const base = import.meta.env.BASE_URL;
     const pdfUrl =
-      language === 'es' ? `${base}CV_CarlaLarreaS2025.pdf` : `${base}CarlaLS_CV_English.pdf`;
+      language === 'es' ? `${baseUrl}CV_CarlaLarreaS2025.pdf` : `${baseUrl}CarlaLS_CV_English.pdf`;
 
     // Abrir en nueva pestaña
     window.open(pdfUrl, '_blank');
@@ -36,7 +39,7 @@ export default function CVDownload() {
     <div className="cv-buttons">
       {language === 'es' ? (
         <a
-          href={`${import.meta.env.BASE_URL}CV_CarlaLarreaS2025.pdf`}
+          href={`${baseUrl}CV_CarlaLarreaS2025.pdf`}
           className="btn btn-primary cv-btn"
           onClick={handleCVClick}
           target="_blank"
@@ -62,7 +65,7 @@ export default function CVDownload() {
         </a>
       ) : (
         <a
-          href={`${import.meta.env.BASE_URL}CarlaLS_CV_English.pdf`}
+          href={`${baseUrl}CarlaLS_CV_English.pdf`}
           className="btn btn-primary cv-btn"
           onClick={handleCVClick}
           target="_blank"

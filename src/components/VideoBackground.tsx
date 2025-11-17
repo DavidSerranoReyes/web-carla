@@ -4,10 +4,12 @@ import '../styles/VideoBackground.css';
 interface VideoBackgroundProps {
   videoSrc?: string;
   poster?: string;
+  baseUrl?: string;
 }
 
 const VideoBackground = forwardRef<HTMLVideoElement, VideoBackgroundProps>(
-  ({ videoSrc = `${import.meta.env.BASE_URL}videos/video.mp4`, poster }, ref) => {
+  ({ videoSrc, poster, baseUrl = '/' }, ref) => {
+    const defaultVideoSrc = videoSrc || `${baseUrl}videos/video.mp4`;
     const internalRef = useRef<HTMLVideoElement>(null);
     const videoRef = (ref as React.RefObject<HTMLVideoElement>) || internalRef;
 
@@ -32,7 +34,7 @@ const VideoBackground = forwardRef<HTMLVideoElement, VideoBackgroundProps>(
           playsInline
           poster={poster}
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src={defaultVideoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
