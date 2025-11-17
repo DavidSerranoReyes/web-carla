@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import VideoBackground from '../components/VideoBackground';
+import VideoWithControl from '../components/VideoWithControl';
 ---
 
 <Layout
@@ -13,7 +13,7 @@ import VideoBackground from '../components/VideoBackground';
   <div transition:persist="header">
     <Header client:load />
   </div>
-  <VideoBackground client:load />
+  <VideoWithControl client:load />
 
   <main class="home-main" transition:animate="slide">
     <div class="container">
