@@ -19,11 +19,19 @@ import VideoWithControl from '../components/VideoWithControl';
     <div class="container">
       <div class="home-content">
         <h1 class="home-title fade-in">Carla Larrea Sánchez</h1>
-        <p class="home-subtitle fade-in">Cineasta</p>
+        <p class="home-subtitle fade-in">
+          <span data-lang-es>Cineasta</span>
+          <span data-lang-en style="display: none;">Filmmaker</span>
+        </p>
         <div class="home-cta fade-in">
-          <a href={`${import.meta.env.BASE_URL}portfolio/`} class="btn btn-primary">Ver Portfolio</a
-          >
-          <a href={`${import.meta.env.BASE_URL}contact/`} class="btn">Contacto</a>
+          <a href={`${import.meta.env.BASE_URL}portfolio/`} class="btn btn-primary">
+            <span data-lang-es>Ver Portfolio</span>
+            <span data-lang-en style="display: none;">View Portfolio</span>
+          </a>
+          <a href={`${import.meta.env.BASE_URL}contact/`} class="btn">
+            <span data-lang-es>Contacto</span>
+            <span data-lang-en style="display: none;">Contact</span>
+          </a>
         </div>
       </div>
     </div>
@@ -144,8 +152,8 @@ import VideoWithControl from '../components/VideoWithControl';
   }
 
   :global([data-theme='light']) .social-section {
-    background: #ffffff;
-    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
   }
 
   .social-links {
@@ -227,3 +235,30 @@ import VideoWithControl from '../components/VideoWithControl';
     }
   }
 </style>
+
+<script>
+  function initHomePage() {
+    function updateLanguage() {
+      const lang = localStorage.getItem('language') || 'es';
+      document.querySelectorAll('[data-lang-es]').forEach((el) => {
+        (el as HTMLElement).style.display = lang === 'es' ? '' : 'none';
+      });
+      document.querySelectorAll('[data-lang-en]').forEach((el) => {
+        (el as HTMLElement).style.display = lang === 'en' ? '' : 'none';
+      });
+    }
+
+    // Update on page load
+    updateLanguage();
+
+    // Update when language changes
+    window.addEventListener('storage', updateLanguage);
+    window.addEventListener('languageChanged', updateLanguage);
+  }
+
+  // Execute on load
+  initHomePage();
+
+  // Execute after View Transitions
+  document.addEventListener('astro:after-swap', initHomePage);
+</script>

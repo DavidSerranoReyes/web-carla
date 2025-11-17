@@ -22,6 +22,10 @@ export default function LanguageToggle() {
     const newLang: Language = language === 'es' ? 'en' : 'es';
     setLanguage(newLang);
     localStorage.setItem('language', newLang);
+
+    // Disparar evento personalizado para que otros componentes se actualicen
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: newLang }));
+
     // Recargar la página para aplicar el nuevo idioma
     window.location.reload();
   };
