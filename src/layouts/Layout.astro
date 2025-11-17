@@ -98,20 +98,60 @@ const jsonLd = {
         const savedTheme = localStorage.getItem('theme');
         const theme = savedTheme || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
+
+        // También aplicar idioma
+        const savedLang = localStorage.getItem('language') || 'es';
+        applyLanguage(savedLang);
       })();
+
+      function applyLanguage(lang) {
+        const elements = document.querySelectorAll('[data-es][data-en]');
+        elements.forEach((el) => {
+          if (lang === 'es') {
+            el.textContent = el.getAttribute('data-es');
+          } else if (lang === 'en') {
+            el.textContent = el.getAttribute('data-en');
+          }
+        });
+      }
+
+      window.applyLanguage = applyLanguage;
     </script>
 
     <!-- Script para mantener el tema durante las transiciones -->
     <script>
+      function applyLanguage(lang: string) {
+        const elements = document.querySelectorAll('[data-es][data-en]');
+        elements.forEach((el) => {
+          if (lang === 'es') {
+            el.textContent = el.getAttribute('data-es');
+          } else if (lang === 'en') {
+            el.textContent = el.getAttribute('data-en');
+          }
+        });
+      }
+
       document.addEventListener('astro:before-swap', () => {
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
+        const savedLang = localStorage.getItem('language') || 'es';
+        applyLanguage(savedLang);
       });
 
       document.addEventListener('astro:after-swap', () => {
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
+        const savedLang = localStorage.getItem('language') || 'es';
+        applyLanguage(savedLang);
       });
+
+      // Aplicar idioma cuando la página termina de cargar
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('language') || 'es';
+        applyLanguage(savedLang);
+      });
+
+      (window as any).applyLanguage = applyLanguage;
     </script>
   </head>
   <body>

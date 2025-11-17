@@ -366,6 +366,7 @@ const base = import.meta.env.BASE_URL;
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    border-radius: var(--radius-lg);
   }
 
   :global([data-theme='light']) .image-background {
@@ -407,9 +408,9 @@ const base = import.meta.env.BASE_URL;
     background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.15) 40%,
-      rgba(0, 0, 0, 0.4) 70%,
-      rgba(0, 0, 0, 0.7) 100%
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
+      rgba(0, 0, 0, 0.35) 100%
     );
   }
 
@@ -419,18 +420,18 @@ const base = import.meta.env.BASE_URL;
     background: linear-gradient(
       to left,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.15) 40%,
-      rgba(0, 0, 0, 0.4) 70%,
-      rgba(0, 0, 0, 0.7) 100%
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
+      rgba(0, 0, 0, 0.35) 100%
     );
   }
 
   :global([data-theme='light']) .image-left::after {
     background: linear-gradient(
       to left,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.4) 30%,
-      rgba(255, 255, 255, 0.2) 60%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.2) 30%,
+      rgba(255, 255, 255, 0.1) 60%,
       rgba(255, 255, 255, 0) 100%
     );
   }
@@ -438,9 +439,9 @@ const base = import.meta.env.BASE_URL;
   :global([data-theme='light']) .image-right::after {
     background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.4) 30%,
-      rgba(255, 255, 255, 0.2) 60%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.2) 30%,
+      rgba(255, 255, 255, 0.1) 60%,
       rgba(255, 255, 255, 0) 100%
     );
   }

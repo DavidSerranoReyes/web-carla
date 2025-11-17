@@ -26,6 +26,12 @@ export default function LanguageToggle() {
     // Disparar evento personalizado para que otros componentes se actualicen
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: newLang }));
 
+    // Aplicar idioma a elementos con data-es/data-en
+    const applyLangFunc = (window as any).applyLanguage;
+    if (applyLangFunc) {
+      applyLangFunc(newLang);
+    }
+
     // Recargar la página para aplicar el nuevo idioma
     window.location.reload();
   };
