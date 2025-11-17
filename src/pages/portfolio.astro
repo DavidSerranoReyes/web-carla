@@ -754,7 +754,20 @@ const base = import.meta.env.BASE_URL;
       width: 100%;
     }
 
-    /* Eliminar animaciones en móvil para mejor performance */
+    /* Mantener animaciones en móvil pero más suaves */
+    .portfolio-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    }
+
+    .portfolio-section.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     :global(.film-section) {
       opacity: 1;
       transform: none;
