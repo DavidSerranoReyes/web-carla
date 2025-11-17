@@ -196,7 +196,6 @@ const base = import.meta.env.BASE_URL;
 
 <style>
   .bio-main {
-    min-height: 100vh;
     padding-top: 80px;
     position: relative;
     overflow-x: hidden;
@@ -288,7 +287,6 @@ const base = import.meta.env.BASE_URL;
   /* Bio Sections */
   .bio-section {
     position: relative;
-    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -298,87 +296,86 @@ const base = import.meta.env.BASE_URL;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  @media (max-width: 768px) {
+    .bio-main {
+      padding-top: 100px;
+    }
 
-  /* Text Content */
-  .text-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: var(--spacing-xl);
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    .profile-image-container {
+      width: 220px;
+      height: 220px;
+    }
+
+    .profile-name {
+      font-size: 2rem;
+    }
+
+    .bio-section {
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .text-content {
+      padding: var(--spacing-lg);
+      max-width: 90%;
+    }
+
+    .bio-text {
+      font-size: 1rem;
+    }
+
+    .image-background {
+      width: 100%;
+      opacity: 0.3;
+    }
+
+    .image-left,
+    .image-right {
+      left: 0;
+      right: 0;
+    }
+
+    .cv-section-container {
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .cv-content {
+      padding: var(--spacing-lg);
+    }
+
+    .cv-title {
+      font-size: 1.5rem;
+    }
+
+    /* Scroll animations for mobile */
+    .profile-hero {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .profile-hero.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio-section.animate-in,
+    .cv-section-container.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio-section.animate-in .text-content {
+      animation: slideInLeft 0.6s ease forwards;
+    }
+
+    .bio-section.animate-in .image-background {
+      animation: fadeInScale 0.8s ease forwards;
+    }
+
+    .cv-section-container.animate-in .cv-content {
+      animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
   }
-
-  :global([data-theme='light']) .text-content {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: #1a1a1a;
-  }
-
-  .bio-text {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin: 0;
-  }
-
-  .text-content .bio-text {
-    color: inherit;
-  }
-
-  /* Image Backgrounds */
-  .image-background {
-    position: absolute;
-    top: 0;
-    width: 55%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  /* Light mode - bordes redondeados que persisten */
-  :global([data-theme='light']) .image-background {
-    border-radius: var(--radius-lg);
-  }
-
-  .image-left {
-    left: 0;
-  }
-
-  .image-right {
-    right: 0;
-  }
-
-  .image-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .bio-section:hover .image-background img {
-    transform: scale(1.05);
-  }
-
-  /* Gradient overlays */
-  .image-background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .image-left::after {
-    right: 0;
     left: auto;
     background: linear-gradient(
       to right,
