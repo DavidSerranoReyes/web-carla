@@ -64,14 +64,28 @@ export default function FilmCard({
     }
   };
 
-  const getYouTubeEmbedUrl = (url: string) => {
-    const videoId = url.split('v=')[1]?.split('&')[0];
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  const isVimeo = (url: string) => {
+    return url.includes('vimeo.com');
   };
 
-  const getYouTubeThumbnail = (url: string) => {
-    const videoId = url.split('v=')[1]?.split('&')[0];
-    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const getVideoEmbedUrl = (url: string) => {
+    if (isVimeo(url)) {
+      const videoId = url.split('vimeo.com/')[1]?.split('?')[0];
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+    } else {
+      const videoId = url.split('v=')[1]?.split('&')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+  };
+
+  const getVideoThumbnail = (url: string) => {
+    if (isVimeo(url)) {
+      // Para Vimeo usamos una imagen placeholder o podrías usar la API de Vimeo
+      return `https://i.vimeocdn.com/video/default_640x360.jpg`;
+    } else {
+      const videoId = url.split('v=')[1]?.split('&')[0];
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
   };
 
   return (
@@ -117,11 +131,7 @@ export default function FilmCard({
 
           {/* Festivales y Premios */}
           <div className="film-section">
-            <h3>
-              {language === 'es'
-                ? 'Festivales y Premios destacados'
-                : 'Featured Festivals & Awards'}
-            </h3>
+            <h3>{language === 'es' ? 'Información destacada' : 'Featured Information'}</h3>
             <ul className="film-festivals">
               {(language === 'es' ? festivals : festivalsEn).map((festival, index) => (
                 <li key={index}>{festival}</li>
@@ -132,11 +142,11 @@ export default function FilmCard({
           {/* Trailer en miniatura */}
           {trailerUrl && (
             <div className="film-section">
-              <h3>{language === 'es' ? 'Tráiler' : 'Trailer'}</h3>
+              <h3>{language === 'es' ? 'Teaser' : 'Teaser'}</h3>
               {!showTrailer ? (
                 <div className="trailer-thumbnail" onClick={() => setShowTrailer(true)}>
                   <img
-                    src={getYouTubeThumbnail(trailerUrl)}
+                    src={getVideoThumbnail(trailerUrl)}
                     alt="Trailer"
                     loading="lazy"
                     decoding="async"
@@ -157,8 +167,8 @@ export default function FilmCard({
               ) : (
                 <div className="trailer-embed">
                   <iframe
-                    src={getYouTubeEmbedUrl(trailerUrl)}
-                    title="YouTube video player"
+                    src={getVideoEmbedUrl(trailerUrl)}
+                    title="Video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

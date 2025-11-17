@@ -92,6 +92,42 @@ const base = import.meta.env.BASE_URL;
           trailerUrl="https://www.youtube.com/watch?v=OP45hzcx9R8"
           fullFilmUrl="https://vimeo.com/657537728"
         />
+
+        <FilmCard
+          client:idle
+          title="TIONIZA"
+          titleEn="TIONIZA"
+          year="En desarrollo / In development"
+          duration="80 min"
+          country="Ecuador"
+          posterImage={`${base}images/films/tioniza-poster.jpg`}
+          galleryImages={[
+            `${base}images/films/tioniza.jpg`,
+            `${base}images/films/tioniza1.jpg`,
+            `${base}images/films/tioniza2.jpg`,
+            `${base}images/films/tioniza3.jpg`,
+            `${base}images/films/tioniza4.jpg`,
+          ]}
+          synopsis="TIONIZA es un documental autobiográfico que sigue a Carla, una joven cineasta ecuatoriana, tras un intento de suicidio. Este acto es el resultado de micro y macro violencias por el hecho de ser mujer, que enfrentó en silencio desde la infancia. Carla, junto a sus primas, emprende el ascenso al volcán Ilinizas en los Andes ecuatorianos para ir, por primera vez, al sitio en el que reposan las cenizas de su abuelo, Jorge 'El Pájaro' Larrea, un pionero del andinismo en Ecuador. El volcán tiene dos cumbres: la cumbre del sur se llama Iliniza (cerro varón), y la cumbre del norte se llama TIONIZA (cerro mujer), pero nadie la nombra. El encuentro de Carla con TIONIZA es una travesía metafórica y física que refleja la invisibilidad de ser mujer."
+          synopsisEn="TIONIZA is an autobiographical documentary that follows Carla, a young Ecuadorian filmmaker, after a suicide attempt. This act is the result of micro and macro violence for being a woman, which she faced in silence since childhood. Carla, together with her cousins, undertakes the ascent to the Ilinizas volcano in the Ecuadorian Andes to go, for the first time, to the site where the ashes of her grandfather, Jorge 'El Pájaro' Larrea, a pioneer of mountaineering in Ecuador, rest. The volcano has two summits: the southern summit is called Iliniza (male mountain), and the northern summit is called TIONIZA (female mountain), but no one names it. Carla's encounter with TIONIZA is a metaphorical and physical journey that reflects the invisibility of being a woman."
+          director="Carla Larrea Sánchez"
+          festivals={[
+            'Documental de creación - 80 minutos',
+            'Idioma: Español',
+            'Color / Dolby Digital',
+            'Aspect ratio: 1:85:1',
+            'Teaser disponible (contraseña: tioniza2023)',
+          ]}
+          festivalsEn={[
+            'Creative Documentary - 80 minutes',
+            'Language: Spanish',
+            'Color / Dolby Digital',
+            'Aspect ratio: 1:85:1',
+            'Teaser available (password: tioniza2023)',
+          ]}
+          pdfUrl={`${base}films/Tionizadosier.pdf`}
+          trailerUrl="https://vimeo.com/915796879"
+        />
       </section>
 
       <section class="portfolio-section fade-in">
@@ -324,15 +360,22 @@ const base = import.meta.env.BASE_URL;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
+    justify-items: center;
   }
 
   :global(.film-gallery img) {
     width: 100%;
-    height: 180px;
+    max-width: 100%;
+    height: 200px;
     object-fit: cover;
     border-radius: var(--radius-sm);
     transition: all var(--transition-normal);
     cursor: pointer;
+  }
+
+  /* Centrar la última imagen si queda sola */
+  :global(.film-gallery img:last-child:nth-child(4)) {
+    grid-column: 2 / 3;
   }
 
   :global(.film-gallery img:hover) {
@@ -521,7 +564,7 @@ const base = import.meta.env.BASE_URL;
     }
 
     :global(.film-gallery img) {
-      height: 120px;
+      height: 150px;
     }
 
     :global(.film-actions) {
