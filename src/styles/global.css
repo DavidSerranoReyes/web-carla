@@ -29,7 +29,7 @@
 }
 
 [data-theme='dark'] {
-  --color-bg: #000000;
+  --color-bg: #000000fb;
   --color-text: #ffffff;
   --color-text-secondary: #cccccc;
   --color-accent: #ffffff;

@@ -153,8 +153,8 @@ const base = import.meta.env.BASE_URL;
   function initBioPage() {
     // Scroll animations
     const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px',
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -165,11 +165,16 @@ const base = import.meta.env.BASE_URL;
       });
     }, observerOptions);
 
+    // Observe all animated elements
     document.querySelectorAll('.bio-section').forEach((section) => {
       observer.observe(section);
     });
 
     document.querySelectorAll('.cv-section-container').forEach((section) => {
+      observer.observe(section);
+    });
+
+    document.querySelectorAll('.profile-hero').forEach((section) => {
       observer.observe(section);
     });
 
@@ -592,6 +597,80 @@ const base = import.meta.env.BASE_URL;
     }
 
     .cv-title {
+      font-size: 1.5rem;
+    }
+
+    /* Scroll animations for mobile */
+    .profile-hero {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .profile-hero.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio-section,
+    .cv-section-container {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .bio-section.visible,
+    .cv-section-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animate text and images separately for better effect */
+    .bio-section.visible .text-content {
+      animation: slideInLeft 0.6s ease forwards;
+    }
+
+    .bio-section.visible .image-background {
+      animation: fadeInScale 0.8s ease forwards;
+    }
+
+    .cv-section-container.visible .cv-content {
+      animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
       font-size: 1.5rem;
     }
   }
