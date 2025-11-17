@@ -151,30 +151,22 @@ const base = import.meta.env.BASE_URL;
 
 <script>
   function initBioPage() {
-    // Scroll animations
+    // Scroll animations (portfolio style)
     const observerOptions = {
-      threshold: 0.15,
+      threshold: 0.1,
       rootMargin: '0px 0px -50px 0px',
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('animate-in');
         }
       });
     }, observerOptions);
 
     // Observe all animated elements
-    document.querySelectorAll('.bio-section').forEach((section) => {
-      observer.observe(section);
-    });
-
-    document.querySelectorAll('.cv-section-container').forEach((section) => {
-      observer.observe(section);
-    });
-
-    document.querySelectorAll('.profile-hero').forEach((section) => {
+    document.querySelectorAll('.bio-section, .cv-section-container, .profile-hero').forEach((section) => {
       observer.observe(section);
     });
 
@@ -305,9 +297,9 @@ const base = import.meta.env.BASE_URL;
     justify-content: center;
     padding: var(--spacing-xl) var(--spacing-md);
     margin-bottom: var(--spacing-xl);
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   /* Text Content */
@@ -493,9 +485,9 @@ const base = import.meta.env.BASE_URL;
     justify-content: center;
     padding: var(--spacing-xl) var(--spacing-md);
     margin-top: var(--spacing-xl);
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   .cv-content {
@@ -626,8 +618,7 @@ const base = import.meta.env.BASE_URL;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
-    .profile-hero.visible {
+    .profile-hero.animate-in {
       opacity: 1;
       transform: translateY(0);
     }
@@ -639,22 +630,22 @@ const base = import.meta.env.BASE_URL;
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .bio-section.visible,
-    .cv-section-container.visible {
+    .bio-section.animate-in,
+    .cv-section-container.animate-in {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* Animate text and images separately for better effect */
-    .bio-section.visible .text-content {
+    .bio-section.animate-in .text-content {
       animation: slideInLeft 0.6s ease forwards;
     }
 
-    .bio-section.visible .image-background {
+    .bio-section.animate-in .image-background {
       animation: fadeInScale 0.8s ease forwards;
     }
 
-    .cv-section-container.visible .cv-content {
+    .cv-section-container.animate-in .cv-content {
       animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
 
