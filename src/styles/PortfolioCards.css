@@ -1,0 +1,249 @@
+/* Article Card Styles */
+.article-card {
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-accent);
+}
+
+.article-thumbnail {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.article-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.article-card:hover .article-thumbnail img {
+  transform: scale(1.05);
+}
+
+.article-content {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.article-meta {
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.article-journal {
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.article-year {
+  margin-bottom: 0.25rem;
+}
+
+.article-authors {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.article-abstract {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-height: 100px;
+  overflow: hidden;
+  transition: max-height var(--transition-normal);
+}
+
+.article-abstract.expanded {
+  max-height: 1000px;
+}
+
+.btn-read-more {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 0.9rem;
+  padding: 0;
+  margin-bottom: var(--spacing-sm);
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-read-more:hover {
+  opacity: 0.7;
+}
+
+.article-keywords {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.article-keywords strong {
+  color: var(--color-text);
+}
+
+.article-actions {
+  margin-top: auto;
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.article-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.article-actions svg {
+  flex-shrink: 0;
+}
+
+/* Criticism Card Styles */
+.criticism-card {
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.criticism-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-accent);
+}
+
+.criticism-thumbnail {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.criticism-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.criticism-card:hover .criticism-thumbnail img {
+  transform: scale(1.05);
+}
+
+.criticism-content {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.criticism-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.criticism-film-title {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+.criticism-meta {
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.criticism-publication {
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.criticism-date {
+  margin-bottom: 0;
+}
+
+.criticism-excerpt {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.criticism-actions {
+  margin-top: auto;
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.criticism-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.criticism-actions svg {
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .article-card,
+  .criticism-card {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .article-title,
+  .criticism-title {
+    font-size: 1.1rem;
+  }
+
+  .article-actions,
+  .criticism-actions {
+    flex-direction: column;
+  }
+
+  .article-actions .btn,
+  .criticism-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

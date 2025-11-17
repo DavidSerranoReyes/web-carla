@@ -3,11 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FilmCard from '../components/FilmCard';
+import ArticleCard from '../components/ArticleCard';
+import CriticismCard from '../components/CriticismCard';
+import '../styles/PortfolioCards.css';
 
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Portfolio - Carla">
+<Layout
+  title="Portfolio - Carla Larrea Sánchez"
+  description="Explora el portfolio de Carla Larrea: films premiados internacionalmente, artículos académicos sobre cine y derechos humanos, y crítica cinematográfica."
+>
   <div transition:persist="header">
     <Header client:load />
   </div>
@@ -56,29 +62,73 @@ const base = import.meta.env.BASE_URL;
       </section>
 
       <section class="portfolio-section fade-in">
-        <h2>Artículos Académicos</h2>
+        <h2 class="section-title" data-es="Artículos Académicos" data-en="Academic Articles">
+          Artículos Académicos
+        </h2>
         <div class="portfolio-grid">
-          <div class="portfolio-card">
-            <h3>Artículo 1</h3>
-            <p>Descripción del artículo académico.</p>
-          </div>
-          <div class="portfolio-card">
-            <h3>Artículo 2</h3>
-            <p>Descripción del artículo académico.</p>
+          <!-- EJEMPLO - Reemplaza con tus artículos reales -->
+          <!-- Copia este bloque ArticleCard y modifica los datos según CONTENIDO_PORTFOLIO.md -->
+          <ArticleCard
+            client:load
+            title="Título de ejemplo de artículo académico"
+            titleEn="Example academic article title"
+            journal="Revista Académica Ejemplo"
+            journalEn="Example Academic Journal"
+            year="2024"
+            authors={['Carla Larrea Sánchez']}
+            abstract="Este es un resumen de ejemplo de un artículo académico. Aquí describirías brevemente el contenido, metodología y principales hallazgos de tu investigación. Reemplaza este texto con el resumen real de tu artículo."
+            abstractEn="This is an example abstract of an academic article. Here you would briefly describe the content, methodology and main findings of your research. Replace this text with the actual abstract of your article."
+            keywords={['cine', 'derechos humanos', 'género', 'feminismo']}
+            keywordsEn={['cinema', 'human rights', 'gender', 'feminism']}
+            pdfUrl={`${base}articles/articulo-ejemplo.pdf`}
+            externalUrl="https://example.com/article"
+          />
+
+          <!-- Agrega más artículos aquí copiando el bloque ArticleCard -->
+
+          <!-- Mensaje temporal si no hay artículos -->
+          <div class="coming-soon-card">
+            <p data-es="Próximamente se agregarán más artículos académicos">
+              Próximamente se agregarán más artículos académicos
+            </p>
+            <p data-en="More academic articles coming soon" style="display: none;">
+              More academic articles coming soon
+            </p>
           </div>
         </div>
       </section>
 
       <section class="portfolio-section fade-in">
-        <h2>Crítica Cinematográfica</h2>
+        <h2 class="section-title" data-es="Crítica Cinematográfica" data-en="Film Criticism">
+          Crítica Cinematográfica
+        </h2>
         <div class="portfolio-grid">
-          <div class="portfolio-card">
-            <h3>Crítica 1</h3>
-            <p>Descripción de la crítica cinematográfica.</p>
-          </div>
-          <div class="portfolio-card">
-            <h3>Crítica 2</h3>
-            <p>Descripción de la crítica cinematográfica.</p>
+          <!-- EJEMPLO - Reemplaza con tus críticas reales -->
+          <!-- Copia este bloque CriticismCard y modifica los datos según CONTENIDO_PORTFOLIO.md -->
+          <CriticismCard
+            client:load
+            title="Título de ejemplo de crítica"
+            titleEn="Example review title"
+            filmTitle="Nombre de la Película"
+            filmTitleEn="Film Name"
+            publication="Medio de Publicación"
+            publicationEn="Publication Medium"
+            date="15 de marzo, 2024"
+            excerpt="Este es un extracto de ejemplo de una crítica cinematográfica. Aquí escribirías las primeras líneas de tu análisis fílmico. Reemplaza este texto con el extracto real de tu crítica."
+            excerptEn="This is an example excerpt of a film review. Here you would write the first lines of your film analysis. Replace this text with the actual excerpt of your review."
+            url="https://example.com/review"
+          />
+
+          <!-- Agrega más críticas aquí copiando el bloque CriticismCard -->
+
+          <!-- Mensaje temporal si no hay críticas -->
+          <div class="coming-soon-card">
+            <p data-es="Próximamente se agregarán más críticas cinematográficas">
+              Próximamente se agregarán más críticas cinematográficas
+            </p>
+            <p data-en="More film reviews coming soon" style="display: none;">
+              More film reviews coming soon
+            </p>
           </div>
         </div>
       </section>
@@ -116,6 +166,24 @@ const base = import.meta.env.BASE_URL;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--spacing-md);
+  }
+
+  .coming-soon-card {
+    padding: var(--spacing-xl);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coming-soon-card p {
+    margin: 0;
   }
 
   .portfolio-card {

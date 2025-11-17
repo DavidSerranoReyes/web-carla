@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://davidserranoreyes.github.io/web-carla/sitemap-index.xml
+
+# Disallow crawling of certain paths (opcional)
+# Disallow: /admin/
+# Disallow: /private/

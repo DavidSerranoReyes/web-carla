@@ -7,7 +7,7 @@ interface VideoBackgroundProps {
 }
 
 export default function VideoBackground({
-  videoSrc = '/videos/background.mp4',
+  videoSrc = `${import.meta.env.BASE_URL}videos/video.mp4`,
   poster,
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -5,20 +5,88 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
+  author?: string;
 }
 
-const { title, description = 'Portfolio cinematográfico de Carla' } = Astro.props;
+const {
+  title,
+  description = 'Carla Larrea Sánchez - Cineasta, activista por los derechos humanos y docente. Portfolio de films, artículos académicos y crítica cinematográfica.',
+  image = '/images/bio/profile.jpg',
+  type = 'website',
+  author = 'Carla Larrea Sánchez',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+
+// Datos estructurados JSON-LD para SEO
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': type === 'profile' ? 'Person' : 'WebSite',
+  name: author,
+  url: canonicalURL.toString(),
+  description: description,
+  image: socialImage.toString(),
+  ...(type === 'profile' && {
+    jobTitle: 'Cineasta y Activista',
+    sameAs: [
+      'https://www.instagram.com/carlilasan/',
+      'https://www.facebook.com/carla.larreasanchez',
+      'https://mx.linkedin.com/in/carla-larrea-sánchez-45887b6a',
+      'https://vimeo.com/carlarreas',
+    ],
+  }),
+};
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta
+      name="keywords"
+      content="Carla Larrea, cineasta, derechos humanos, feminismo, cine ecuatoriano, directora, activista, crítica cinematográfica"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Carla Larrea Sánchez - Portfolio" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- View Transitions para navegación fluida -->
     <ViewTransitions />
