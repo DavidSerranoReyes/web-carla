@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL;
         <h2 class="section-title" data-es="Films" data-en="Films">Films</h2>
 
         <FilmCard
-          client:load
+          client:idle
           title="INDELEBLE"
           titleEn="INDELIBLE"
           year="2016"
@@ -58,6 +58,42 @@ const base = import.meta.env.BASE_URL;
           pdfUrl={`${base}films/indeleble-ficha.pdf`}
           trailerUrl="https://www.youtube.com/watch?v=rEprGd9fESk"
           fullFilmUrl="https://vimeo.com/176618936"
+        />
+
+        <FilmCard
+          client:idle
+          title="POR MAGDA"
+          titleEn="FOR MAGDA"
+          year="2019"
+          duration="19:20 min"
+          country="Ecuador"
+          posterImage={`${base}images/films/pormagda.jpg`}
+          galleryImages={[
+            `${base}images/films/pormagda1.jpeg`,
+            `${base}images/films/pormagda2.jpg`,
+          ]}
+          synopsis="Lía, una profesora de 35 años, parece llevar una vida estable junto a Santiago, su compañero desde hace años, y sus dos mejores amigas, Eva y Lola. Sin embargo, su mundo se desmorona cuando descubre que Santiago mantiene una relación secreta con su prima Gabriela. Al mismo tiempo, un diagnóstico médico inesperado —cáncer de cuello uterino avanzado— la enfrenta a una cirugía radical que cambiará su cuerpo y su vida para siempre. Mientras Lola lidia con las secuelas de un aborto y Eva explora una relación atípica, las tres amigas se verán forzadas a confrontar mentiras, secretos y la fragilidad de sus propios vínculos. El Secreto de Lía es una historia íntima y conmovedora sobre la traición, la sororidad, la salud femenina y el coraje de reconstruirse cuando todo parece desmoronarse."
+          synopsisEn="Lía, a 35-year-old teacher, seems to lead a stable life with Santiago, her partner of many years, and her two best friends, Eva and Lola. However, her world crumbles when she discovers that Santiago is secretly involved with her cousin Gabriela. At the same time, an unexpected medical diagnosis—advanced cervical cancer—forces her to face radical surgery that will change her body and her life forever. While Lola deals with the aftermath of an abortion and Eva explores an unconventional relationship, the three friends are forced to confront lies, secrets, and the fragility of their own bonds. Lía's Secret is an intimate and moving story about betrayal, sisterhood, women's health, and the courage to rebuild when everything seems to fall apart."
+          director="Carla Larrea Sánchez"
+          festivals={[
+            'Festival Internacional de Cine de Mar del Plata 2019 - Competencia Internacional',
+            'Festival Internacional de Cine de Guadalajara 2020 - Selección oficial',
+            'Festival Internacional de Cine de Morelia 2019 - Selección oficial',
+            'BAFICI - Buenos Aires Festival Internacional de Cine Independiente 2020',
+            'Festival de Cine de Lima 2019',
+            'Festival Internacional de Cortometrajes de São Paulo 2020',
+          ]}
+          festivalsEn={[
+            'Mar del Plata International Film Festival 2019 - International Competition',
+            'Guadalajara International Film Festival 2020 - Official Selection',
+            'Morelia International Film Festival 2019 - Official Selection',
+            'BAFICI - Buenos Aires International Independent Film Festival 2020',
+            'Lima Film Festival 2019',
+            'São Paulo International Short Film Festival 2020',
+          ]}
+          pdfUrl={`${base}films/PORMAGDA2.pdf`}
+          trailerUrl="https://www.youtube.com/watch?v=OP45hzcx9R8"
+          fullFilmUrl="https://vimeo.com/657537728"
         />
       </section>
 
@@ -506,10 +542,13 @@ const base = import.meta.env.BASE_URL;
       max-width: 100%;
     }
 
-    /* Scroll animations for mobile */
-    :global(.film-card),
-    :global(.film-section),
-    :global(.film-gallery img),
+    /* React components should NOT have scroll animations (causes hydration issues) */
+    :global(.film-card) {
+      opacity: 1;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Scroll animations only for static Astro elements */
     .portfolio-section {
       opacity: 0;
       transform: translateY(30px);
@@ -518,29 +557,21 @@ const base = import.meta.env.BASE_URL;
         transform 0.6s ease;
     }
 
-    :global(.film-card.animate-in),
-    :global(.film-section.animate-in),
-    :global(.film-gallery img.animate-in),
     .portfolio-section.animate-in {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Stagger animation delays for gallery items */
-    :global(.film-gallery img:nth-child(1)) {
-      transition-delay: 0.1s;
-    }
-    :global(.film-gallery img:nth-child(2)) {
-      transition-delay: 0.2s;
-    }
-    :global(.film-gallery img:nth-child(3)) {
-      transition-delay: 0.3s;
-    }
-    :global(.film-gallery img:nth-child(4)) {
-      transition-delay: 0.4s;
-    }
-    :global(.film-gallery img:nth-child(5)) {
-      transition-delay: 0.5s;
+    /* Simple fade-in keyframe for React components */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 </style>
@@ -575,12 +606,10 @@ const base = import.meta.env.BASE_URL;
       });
     }, observerOptions);
 
-    // Observe film cards, sections, and gallery items
-    document
-      .querySelectorAll('.film-card, .film-section, .film-gallery img, .portfolio-section')
-      .forEach((el) => {
-        observer.observe(el);
-      });
+    // Observe only static Astro elements, NOT React components
+    document.querySelectorAll('.portfolio-section').forEach((el) => {
+      observer.observe(el);
+    });
   }
 
   // Update on page load
