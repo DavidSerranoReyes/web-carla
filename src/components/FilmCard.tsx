@@ -78,7 +78,7 @@ export default function FilmCard({
     <article className="film-card">
       {/* Poster principal - más grande */}
       <div className="film-poster-large">
-        <img src={posterImage} alt={title} loading="lazy" />
+        <img src={posterImage} alt={title} loading="eager" fetchPriority="high" decoding="async" />
         <div className="film-overlay">
           <h2 className="film-title">{language === 'es' ? title : titleEn}</h2>
           <p className="film-meta">
@@ -101,6 +101,7 @@ export default function FilmCard({
                 alt={`${title} - ${index + 1}`}
                 className="gallery-thumb"
                 loading="lazy"
+                decoding="async"
               />
             ))}
           </div>
@@ -134,7 +135,12 @@ export default function FilmCard({
               <h3>{language === 'es' ? 'Tráiler' : 'Trailer'}</h3>
               {!showTrailer ? (
                 <div className="trailer-thumbnail" onClick={() => setShowTrailer(true)}>
-                  <img src={getYouTubeThumbnail(trailerUrl)} alt="Trailer" loading="lazy" />
+                  <img
+                    src={getYouTubeThumbnail(trailerUrl)}
+                    alt="Trailer"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="play-button">
                     <svg
                       width="80"
