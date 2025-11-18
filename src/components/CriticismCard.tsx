@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import { getCurrentLanguage } from '../utils/i18n';
-import type { Language } from '../types';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface CriticismCardProps {
   title: string;
@@ -29,21 +27,7 @@ export default function CriticismCard({
   url,
   thumbnail,
 }: CriticismCardProps) {
-  const [language, setLanguage] = useState<Language>('es');
-
-  useEffect(() => {
-    const updateLanguage = () => {
-      const lang = getCurrentLanguage();
-      setLanguage(lang);
-    };
-
-    updateLanguage();
-    window.addEventListener('storage', updateLanguage);
-
-    return () => {
-      window.removeEventListener('storage', updateLanguage);
-    };
-  }, []);
+  const language = useLanguage();
 
   return (
     <article className="criticism-card">

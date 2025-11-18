@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { getCurrentLanguage } from '../utils/i18n';
-import type { Language } from '../types';
+import { useState } from 'react';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface ArticleCardProps {
   title: string;
@@ -33,22 +32,8 @@ export default function ArticleCard({
   externalUrl,
   thumbnail,
 }: ArticleCardProps) {
-  const [language, setLanguage] = useState<Language>('es');
+  const language = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
-
-  useEffect(() => {
-    const updateLanguage = () => {
-      const lang = getCurrentLanguage();
-      setLanguage(lang);
-    };
-
-    updateLanguage();
-    window.addEventListener('storage', updateLanguage);
-
-    return () => {
-      window.removeEventListener('storage', updateLanguage);
-    };
-  }, []);
 
   const handleReadMore = () => {
     setIsExpanded(!isExpanded);

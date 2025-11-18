@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { getCurrentLanguage } from '../utils/i18n';
-import type { Language } from '../types';
+import { useState } from 'react';
+import { useLanguage } from '../hooks/useLanguage';
+import { getEmbedUrl, getThumbnail } from '../utils/video';
 
 interface FilmCardProps {
   title: string;
@@ -49,22 +49,8 @@ export default function FilmCard({
   pdfLabel = 'Ficha Completa',
   pdfLabelEn = 'Full Info',
 }: FilmCardProps) {
-  const [language, setLanguage] = useState<Language>('es');
+  const language = useLanguage();
   const [showTrailer, setShowTrailer] = useState(false);
-
-  useEffect(() => {
-    const updateLanguage = () => {
-      const lang = getCurrentLanguage();
-      setLanguage(lang);
-    };
-
-    updateLanguage();
-    window.addEventListener('storage', updateLanguage);
-
-    return () => {
-      window.removeEventListener('storage', updateLanguage);
-    };
-  }, []);
 
   const openPDF = () => {
     window.open(pdfUrl, '_blank');
@@ -73,30 +59,6 @@ export default function FilmCard({
   const openFullFilm = () => {
     if (fullFilmUrl) {
       window.open(fullFilmUrl, '_blank');
-    }
-  };
-
-  const isVimeo = (url: string) => {
-    return url.includes('vimeo.com');
-  };
-
-  const getVideoEmbedUrl = (url: string) => {
-    if (isVimeo(url)) {
-      const videoId = url.split('vimeo.com/')[1]?.split('?')[0];
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
-    } else {
-      const videoId = url.split('v=')[1]?.split('&')[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
-  };
-
-  const getVideoThumbnail = (url: string) => {
-    if (isVimeo(url)) {
-      // Para Vimeo usamos una imagen placeholder o podrías usar la API de Vimeo
-      return `https://i.vimeocdn.com/video/default_640x360.jpg`;
-    } else {
-      const videoId = url.split('v=')[1]?.split('&')[0];
-      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
     }
   };
 
@@ -158,7 +120,7 @@ export default function FilmCard({
               {!showTrailer ? (
                 <div className="trailer-thumbnail" onClick={() => setShowTrailer(true)}>
                   <img
-                    src={getVideoThumbnail(trailerUrl)}
+                    src={getThumbnail(trailerUrl)}
                     alt="Trailer"
                     loading="lazy"
                     decoding="async"
@@ -179,7 +141,7 @@ export default function FilmCard({
               ) : (
                 <div className="trailer-embed">
                   <iframe
-                    src={getVideoEmbedUrl(trailerUrl)}
+                    src={getEmbedUrl(trailerUrl)}
                     title="Video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
