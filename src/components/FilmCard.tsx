@@ -18,6 +18,12 @@ interface FilmCardProps {
   pdfUrl: string;
   trailerUrl?: string;
   fullFilmUrl?: string;
+  videoLabel?: string;
+  videoLabelEn?: string;
+  infoLabel?: string;
+  infoLabelEn?: string;
+  pdfLabel?: string;
+  pdfLabelEn?: string;
 }
 
 export default function FilmCard({
@@ -36,6 +42,12 @@ export default function FilmCard({
   pdfUrl,
   trailerUrl,
   fullFilmUrl,
+  videoLabel = 'Teaser',
+  videoLabelEn = 'Teaser',
+  infoLabel = 'Información destacada',
+  infoLabelEn = 'Featured Information',
+  pdfLabel = 'Ficha Completa',
+  pdfLabelEn = 'Full Info',
 }: FilmCardProps) {
   const [language, setLanguage] = useState<Language>('es');
   const [showTrailer, setShowTrailer] = useState(false);
@@ -131,7 +143,7 @@ export default function FilmCard({
 
           {/* Festivales y Premios */}
           <div className="film-section">
-            <h3>{language === 'es' ? 'Información destacada' : 'Featured Information'}</h3>
+            <h3>{language === 'es' ? infoLabel : infoLabelEn}</h3>
             <ul className="film-festivals">
               {(language === 'es' ? festivals : festivalsEn).map((festival, index) => (
                 <li key={index}>{festival}</li>
@@ -142,7 +154,7 @@ export default function FilmCard({
           {/* Trailer en miniatura */}
           {trailerUrl && (
             <div className="film-section">
-              <h3>{language === 'es' ? 'Teaser' : 'Teaser'}</h3>
+              <h3>{language === 'es' ? videoLabel : videoLabelEn}</h3>
               {!showTrailer ? (
                 <div className="trailer-thumbnail" onClick={() => setShowTrailer(true)}>
                   <img
@@ -182,7 +194,7 @@ export default function FilmCard({
         {/* Botones de acción - más compactos */}
         <div className="film-actions">
           <button onClick={openPDF} className="btn-action">
-            📄 {language === 'es' ? 'Ficha Completa' : 'Full Info'}
+            📄 {language === 'es' ? pdfLabel : pdfLabelEn}
           </button>
 
           {fullFilmUrl && (

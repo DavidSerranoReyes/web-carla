@@ -4,7 +4,7 @@ const translations: Record<Language, Translation> = {
   es: {
     nav: {
       home: 'Inicio',
-      portfolio: 'Portfolio',
+      portfolio: 'Portafolio',
       bio: 'Bio',
       contact: 'Contacto',
     },

@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 
   <main class="portfolio-main" transition:animate="slide">
     <div class="container">
-      <h1 class="page-title fade-in">Portfolio</h1>
+      <h1 class="page-title fade-in" data-es="Portafolio" data-en="Portfolio">Portafolio</h1>
 
       <section class="portfolio-section fade-in">
         <h2 class="section-title" data-es="Films" data-en="Films">Films</h2>
@@ -58,6 +58,8 @@ const base = import.meta.env.BASE_URL;
           pdfUrl={`${base}films/indeleble-ficha.pdf`}
           trailerUrl="https://www.youtube.com/watch?v=rEprGd9fESk"
           fullFilmUrl="https://vimeo.com/176618936"
+          videoLabel="Trailer"
+          videoLabelEn="Trailer"
         />
 
         <FilmCard
@@ -75,6 +77,7 @@ const base = import.meta.env.BASE_URL;
           festivals={[
             'Canada Shorts Film Festival 2022 - Mejor Película Estudiantil',
             'Festival de Málaga 2023 - Biznaga de Plata Primer Premio',
+            'Kunturñawi 2024 - Premio Mejor Corto Ficción',
             'Festival Internacional de Cine de Morelia 2022',
             'Festival Internacional de Cine de Quito 2022',
             'Festival Internacional de Cortometraje de São Paulo 2022',
@@ -83,6 +86,7 @@ const base = import.meta.env.BASE_URL;
           festivalsEn={[
             'Canada Shorts Film Festival 2022 - Best Student Film',
             'Málaga Festival 2023 - Silver Biznaga First Prize',
+            'Kunturñawi 2024 - Best Fiction Short Film Award',
             'Morelia International Film Festival 2022',
             'Quito International Film Festival 2022',
             'São Paulo International Short Film Festival 2022',
@@ -91,27 +95,28 @@ const base = import.meta.env.BASE_URL;
           pdfUrl={`${base}films/PORMAGDA2.pdf`}
           trailerUrl="https://www.youtube.com/watch?v=OP45hzcx9R8"
           fullFilmUrl="https://vimeo.com/657537728"
+          videoLabel="Trailer"
+          videoLabelEn="Trailer"
         />
 
         <FilmCard
           client:only="react"
           title="TIONIZA"
           titleEn="TIONIZA"
-          year="En desarrollo / In development"
+          year="Post-producción / Post-production"
           duration="80 min"
           country="Ecuador"
           posterImage={`${base}images/films/tioniza-poster.jpg`}
           galleryImages={[
             `${base}images/films/tioniza.jpg`,
             `${base}images/films/tioniza1.jpg`,
-            `${base}images/films/tioniza2.jpg`,
             `${base}images/films/tioniza3.jpg`,
-            `${base}images/films/tioniza4.jpg`,
           ]}
           synopsis="TIONIZA es un documental autobiográfico que sigue a Carla, una joven cineasta ecuatoriana, tras un intento de suicidio. Este acto es el resultado de micro y macro violencias por el hecho de ser mujer, que enfrentó en silencio desde la infancia. Carla, junto a sus primas, emprende el ascenso al volcán Ilinizas en los Andes ecuatorianos para ir, por primera vez, al sitio en el que reposan las cenizas de su abuelo, Jorge 'El Pájaro' Larrea, un pionero del andinismo en Ecuador. El volcán tiene dos cumbres: la cumbre del sur se llama Iliniza (cerro varón), y la cumbre del norte se llama TIONIZA (cerro mujer), pero nadie la nombra. El encuentro de Carla con TIONIZA es una travesía metafórica y física que refleja la invisibilidad de ser mujer."
           synopsisEn="TIONIZA is an autobiographical documentary that follows Carla, a young Ecuadorian filmmaker, after a suicide attempt. This act is the result of micro and macro violence for being a woman, which she faced in silence since childhood. Carla, together with her cousins, undertakes the ascent to the Ilinizas volcano in the Ecuadorian Andes to go, for the first time, to the site where the ashes of her grandfather, Jorge 'El Pájaro' Larrea, a pioneer of mountaineering in Ecuador, rest. The volcano has two summits: the southern summit is called Iliniza (male mountain), and the northern summit is called TIONIZA (female mountain), but no one names it. Carla's encounter with TIONIZA is a metaphorical and physical journey that reflects the invisibility of being a woman."
           director="Carla Larrea Sánchez"
           festivals={[
+            'Estado: Post-producción',
             'Documental de creación - 80 minutos',
             'Idioma: Español',
             'Color / Dolby Digital',
@@ -119,6 +124,7 @@ const base = import.meta.env.BASE_URL;
             'Teaser disponible (contraseña: tioniza2023)',
           ]}
           festivalsEn={[
+            'Status: Post-production',
             'Creative Documentary - 80 minutes',
             'Language: Spanish',
             'Color / Dolby Digital',
@@ -127,6 +133,10 @@ const base = import.meta.env.BASE_URL;
           ]}
           pdfUrl={`${base}films/Tionizadosier.pdf`}
           trailerUrl="https://vimeo.com/915796879"
+          infoLabel="Ficha técnica"
+          infoLabelEn="Technical Sheet"
+          pdfLabel="Dosier"
+          pdfLabelEn="Dossier"
         />
 
         <FilmCard
@@ -141,9 +151,23 @@ const base = import.meta.env.BASE_URL;
           synopsis="Lía, una profesora de 35 años, parece llevar una vida estable junto a Santiago, su compañero desde hace años, y sus dos mejores amigas, Eva y Lola. Sin embargo, su mundo se desmorona cuando descubre que Santiago mantiene una relación secreta con su prima Gabriela. Al mismo tiempo, un diagnóstico médico inesperado —cáncer de cuello uterino avanzado— la enfrenta a una cirugía radical que cambiará su cuerpo y su vida para siempre. Mientras Lola lidia con las secuelas de un aborto y Eva explora una relación atípica, las tres amigas se verán forzadas a confrontar mentiras, secretos y la fragilidad de sus propios vínculos. El Secreto de Lía es una historia íntima y conmovedora sobre la traición, la sororidad, la salud femenina y el coraje de reconstruirse cuando todo parece desmoronarse."
           synopsisEn="Lía, a 35-year-old teacher, seems to lead a stable life with Santiago, her partner of many years, and her two best friends, Eva and Lola. However, her world crumbles when she discovers that Santiago is secretly involved with her cousin Gabriela. At the same time, an unexpected medical diagnosis—advanced cervical cancer—forces her to face radical surgery that will change her body and her life forever. While Lola deals with the aftermath of an abortion and Eva explores an unconventional relationship, the three friends are forced to confront lies, secrets, and the fragility of their own bonds. Lía's Secret is an intimate and moving story about betrayal, sisterhood, women's health, and the courage to rebuild when everything seems to fall apart."
           director="Carla Larrea Sánchez"
-          festivals={['Proyecto en desarrollo', 'Largometraje de ficción']}
-          festivalsEn={['Project in development', 'Fiction feature film']}
+          festivals={[
+            'Estado: En escritura',
+            'Proyecto en desarrollo',
+            'Largometraje de ficción',
+            'Residencia COOFILM 2 (2021)',
+            'Lab guin (2022)',
+          ]}
+          festivalsEn={[
+            'Status: In writing',
+            'Project in development',
+            'Fiction feature film',
+            'COOFILM 2 Residency (2021)',
+            'Lab guin (2022)',
+          ]}
           pdfUrl={`${base}films/secretolia.pdf`}
+          pdfLabel="Moodboard"
+          pdfLabelEn="Moodboard"
         />
       </section>
 
@@ -435,11 +459,6 @@ const base = import.meta.env.BASE_URL;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow);
-  }
-
-  :global(.film-card:hover .film-poster-large img) {
-    transform: scale(1.03);
   }
 
   :global(.film-overlay) {
@@ -449,9 +468,9 @@ const base = import.meta.env.BASE_URL;
     right: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.95) 0%,
-      rgba(0, 0, 0, 0.85) 40%,
-      rgba(0, 0, 0, 0.6) 70%,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
       transparent 100%
     );
     padding: var(--spacing-xl);
@@ -505,13 +524,8 @@ const base = import.meta.env.BASE_URL;
     height: 200px;
     object-fit: cover;
     border-radius: var(--radius-sm);
-    transition: all var(--transition-normal);
     cursor: pointer;
-  }
-
-  /* Centrar la última imagen si queda sola */
-  :global(.film-gallery img:last-child:nth-child(4)) {
-    grid-column: 2 / 3;
+    transition: all var(--transition-normal);
   }
 
   :global(.film-gallery img:hover) {
@@ -576,12 +590,6 @@ const base = import.meta.env.BASE_URL;
     overflow: hidden;
     max-width: 600px;
     margin: 0 auto;
-    transition: all var(--transition-normal);
-  }
-
-  :global(.trailer-thumbnail:hover) {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   :global(.trailer-thumbnail img) {
@@ -642,21 +650,9 @@ const base = import.meta.env.BASE_URL;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-normal);
     text-transform: uppercase;
     letter-spacing: 1px;
     min-width: 200px;
-  }
-
-  :global(.btn-action:hover) {
-    background: var(--color-accent);
-    color: var(--color-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-  }
-
-  :global(.btn-action:active) {
-    transform: translateY(0);
   }
 
   @media (max-width: 768px) {

@@ -4,16 +4,15 @@
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: all var(--transition-normal);
 }
 
 .article-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border-color: var(--color-accent);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .article-thumbnail {
@@ -27,11 +26,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.article-card:hover .article-thumbnail img {
-  transform: scale(1.05);
 }
 
 .article-content {
@@ -135,16 +129,15 @@
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: all var(--transition-normal);
 }
 
 .criticism-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border-color: var(--color-accent);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .criticism-thumbnail {
@@ -158,11 +151,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.criticism-card:hover .criticism-thumbnail img {
-  transform: scale(1.05);
 }
 
 .criticism-content {
