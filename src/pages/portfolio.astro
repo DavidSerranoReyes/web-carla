@@ -131,7 +131,7 @@ const base = import.meta.env.BASE_URL;
             'Aspect ratio: 1:85:1',
             'Teaser available (password: tioniza2023)',
           ]}
-          pdfUrl={`${base}films/Tionizadosier.pdf`}
+          pdfUrl="#"
           trailerUrl="https://vimeo.com/915796879"
           infoLabel="Ficha técnica"
           infoLabelEn="Technical Sheet"
@@ -156,14 +156,14 @@ const base = import.meta.env.BASE_URL;
             'Proyecto en desarrollo',
             'Largometraje de ficción',
             'Residencia COOFILM 2 (2021)',
-            'Lab guin (2022)',
+            'Lab guión (2022)',
           ]}
           festivalsEn={[
             'Status: In writing',
             'Project in development',
             'Fiction feature film',
             'COOFILM 2 Residency (2021)',
-            'Lab guin (2022)',
+            'Lab guión (2022)',
           ]}
           pdfUrl={`${base}films/secretolia.pdf`}
           pdfLabel="Moodboard"
@@ -473,13 +473,13 @@ const base = import.meta.env.BASE_URL;
       rgba(0, 0, 0, 0.2) 70%,
       transparent 100%
     );
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     color: white;
   }
 
   :global(.film-title) {
     font-size: 3rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.3rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
@@ -487,7 +487,8 @@ const base = import.meta.env.BASE_URL;
   :global(.film-meta) {
     font-size: 1.2rem;
     opacity: 0.95;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
   }
 
   :global(.film-director) {
@@ -699,17 +700,23 @@ const base = import.meta.env.BASE_URL;
     }
 
     :global(.film-poster-large) {
-      height: 400px;
+      height: 500px;
       width: 100%;
     }
 
+    :global(.film-overlay) {
+      padding: var(--spacing-md) var(--spacing-sm);
+    }
+
     :global(.film-title) {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
     }
 
     :global(.film-meta),
     :global(.film-director) {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
     }
 
     :global(.film-content) {
